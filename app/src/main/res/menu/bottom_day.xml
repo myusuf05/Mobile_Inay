@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/btn_senin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:title="Senin"
+        android:icon="@drawable/ic_home_24"/>
+    <item
+        android:id="@+id/btn_selasa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:title="Selassa" />
+    <item
+        android:id="@+id/btn_rabu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:title="Rabu" />
+    <item
+        android:id="@+id/kamis"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:title="Kamis" />
+    <item
+        android:id="@+id/jumat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:title="Jum'at" />
+    <item
+        android:id="@+id/sabtu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:title="Sabtu" />
+    <item
+        android:id="@+id/minggu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:title="Minggu" />
+</menu>
