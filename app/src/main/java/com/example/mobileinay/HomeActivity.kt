@@ -1,10 +1,17 @@
 package com.example.mobileinay
 
+import android.annotation.SuppressLint
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import com.example.mobileinay.databinding.ActivityHomeBinding
-import com.example.mobileinay.databinding.FragmentHomeBinding
+import com.google.android.material.bottomnavigation.BottomNavigationView
+
+import com.google.firebase.auth.FirebaseAuth
+
 
 class HomeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHomeBinding
@@ -31,10 +38,10 @@ class HomeActivity : AppCompatActivity() {
 
     }
 
-        private fun replaceFragment(fragment: Fragment){
-            val fragmentManager = supportFragmentManager
-            val fragmentTransaction = fragmentManager.beginTransaction()
-            fragmentTransaction.replace(R.id.Fragment_home,fragment)
-            fragmentTransaction.commit()
-        }
+    private fun replaceFragment(fragment: Fragment){
+        val fragmentManager = supportFragmentManager
+        val fragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.Fragment_home,fragment)
+        fragmentTransaction.commit()
+    }
 }

@@ -15,4 +15,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "MobileInay"
 include(":app")
- 
+include(":app:crudrealitimeadmin")
+include(":crudrtadmin")

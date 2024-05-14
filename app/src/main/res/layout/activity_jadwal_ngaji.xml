@@ -70,7 +70,6 @@
         app:layout_constraintTop_toBottomOf="@id/bg_jadwal">
 
         <LinearLayout
-            android:id="@+id/ll_jadwal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -80,14 +79,15 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:backgroundTint="@color/bg_edit_text">
+                >
 
                 <TextView
-                    android:id="@+id/tv_senin"
+                    android:id="@+id/tvSenin"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="16dp"
-                    android:textColor="@color/white"
                     android:text="Senin"
+                    android:textColor="@color/white"
                     android:textSize="16sp"
                     android:textStyle="bold" />
 
@@ -96,10 +96,11 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp">
+                android:layout_margin="8dp"
+                >
 
                 <TextView
-                    android:id="@+id/tv_selasa"
+                    android:id="@+id/tvSelasa"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="16dp"
@@ -112,13 +113,16 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp">
+                android:layout_margin="8dp"
+
+                >
 
                 <TextView
-                    android:id="@+id/tv_rabu"
+                    android:id="@+id/tvRabu"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="16dp"
+
                     android:text="Rabu"
                     android:textSize="16sp"
                     android:textStyle="bold" />
@@ -128,13 +132,15 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp">
+                android:layout_margin="8dp"
+                >
 
                 <TextView
-                    android:id="@+id/tv_kamis"
+                    android:id="@+id/tvKamis"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="16dp"
+
                     android:text="Kamis"
                     android:textSize="16sp"
                     android:textStyle="bold" />
@@ -144,13 +150,15 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp">
+                android:layout_margin="8dp"
+                android:backgroundTint="@color/bg_edit_text">
 
                 <TextView
-                    android:id="@+id/tv_jumat"
+                    android:id="@+id/tvJumat"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="16dp"
+                    android:textColor="@color/white"
                     android:text="Jumat"
                     android:textSize="16sp"
                     android:textStyle="bold" />
@@ -163,7 +171,7 @@
                 android:layout_margin="8dp">
 
                 <TextView
-                    android:id="@+id/tv_sabtu"
+                    android:id="@+id/tvSabtu"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="16dp"
@@ -179,7 +187,7 @@
                 android:layout_margin="8dp">
 
                 <TextView
-                    android:id="@+id/tv_minggu"
+                    android:id="@+id/tvMinggu"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="16dp"
@@ -206,7 +214,6 @@
             android:layout_width="match_parent"
             android:layout_height="160dp">
             <ImageView
-                android:id="@+id/imageView3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:scaleType="fitXY"
@@ -254,7 +261,6 @@
                 app:layout_constraintTop_toBottomOf="@id/textView4" />
 
             <TextView
-                android:id="@+id/textView6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="40dp"
@@ -274,7 +280,6 @@
             >
 
             <ImageView
-                android:id="@+id/imageView4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:scaleType="fitXY"
@@ -325,7 +330,6 @@
                 app:layout_constraintTop_toBottomOf="@id/Mapel2" />
 
             <TextView
-                android:id="@+id/Jam"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="40dp"
@@ -340,27 +344,5 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </LinearLayout>
-<!--    <com.google.android.material.bottomnavigation.BottomNavigationView-->
-<!--        android:id="@+id/btn_nav_day"-->
-<!--        app:menu="@menu/bottom_day"-->
-<!--        android:layout_width="0dp"-->
-<!--        android:layout_height="40dp"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@id/bg_jadwal"-->
-<!--        app:layout_constraintBottom_toBottomOf="@+id/Fragment_jadwal_ngaji">-->
-
-<!--    </com.google.android.material.bottomnavigation.BottomNavigationView>-->
-
-<!--    <FrameLayout-->
-<!--        android:id="@+id/Fragment_jadwal_ngaji"-->
-<!--        android:layout_width="0dp"-->
-<!--        android:layout_height="0dp"-->
-<!--        android:layout_marginTop="70dp"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="@+id/btn_nav_day"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

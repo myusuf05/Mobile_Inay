@@ -69,7 +69,6 @@
         app:layout_constraintTop_toBottomOf="@id/bg_jadwal">
 
         <LinearLayout
-            android:id="@+id/ll_jadwal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -81,11 +80,10 @@
                 >
 
                 <TextView
-                    android:id="@+id/tv_senin"
+                    android:id="@+id/tvSenin"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="16dp"
-
                     android:text="Senin"
                     android:textSize="16sp"
                     android:textStyle="bold" />
@@ -99,11 +97,10 @@
                 >
 
                 <TextView
-                    android:id="@+id/tv_selasa"
+                    android:id="@+id/tvSelasa"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="16dp"
-
                     android:text="Selasa"
                     android:textSize="16sp"
                     android:textStyle="bold" />
@@ -118,7 +115,7 @@
                 >
 
                 <TextView
-                    android:id="@+id/tv_rabu"
+                    android:id="@+id/tvRabu"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="16dp"
@@ -136,7 +133,7 @@
                 >
 
                 <TextView
-                    android:id="@+id/tv_kamis"
+                    android:id="@+id/tvKamis"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="16dp"
@@ -154,7 +151,7 @@
                 >
 
                 <TextView
-                    android:id="@+id/tv_jumat"
+                    android:id="@+id/tvJumat"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="16dp"
@@ -172,7 +169,7 @@
                 android:backgroundTint="@color/bg_edit_text">
 
                 <TextView
-                    android:id="@+id/tv_sabtu"
+                    android:id="@+id/tvSabtu"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="16dp"
@@ -189,7 +186,7 @@
                 android:layout_margin="8dp">
 
                 <TextView
-                    android:id="@+id/tv_minggu"
+                    android:id="@+id/tvMinggu"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="16dp"
@@ -216,7 +213,6 @@
             android:layout_width="match_parent"
             android:layout_height="160dp">
             <ImageView
-                android:id="@+id/imageView3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:scaleType="fitXY"
@@ -264,7 +260,6 @@
                 app:layout_constraintTop_toBottomOf="@id/textView4" />
 
             <TextView
-                android:id="@+id/textView6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="40dp"
@@ -284,7 +279,6 @@
             >
 
             <ImageView
-                android:id="@+id/imageView4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:scaleType="fitXY"
@@ -335,7 +329,6 @@
                 app:layout_constraintTop_toBottomOf="@id/Mapel2" />
 
             <TextView
-                android:id="@+id/Jam"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="40dp"

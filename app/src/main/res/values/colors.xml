@@ -4,7 +4,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="bg_utama">#22A699</color>
     <color name="bg_edit_text">#48CAE4</color>
-    <color name="btn_nav">#E0EFF2</color>
     <color name="gray">#D8D8D8</color>
-    <color name="fragment">#E0EFF2</color>
 </resources>

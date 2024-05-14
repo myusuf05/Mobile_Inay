@@ -3,6 +3,7 @@ package com.example.mobileinay
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ImageButton
 import com.example.mobileinay.databinding.ActivityJadNgaMingBinding
 
 class JadNgaMingActivity : AppCompatActivity() {
@@ -12,6 +13,15 @@ class JadNgaMingActivity : AppCompatActivity() {
         binding = ActivityJadNgaMingBinding.inflate(layoutInflater)
         setContentView(binding.root)
         supportActionBar?.hide()
+
+        // Find the ImageButton in the layout
+        val img_back = findViewById<ImageButton>(R.id.img_back)
+
+        // Set click listener on the ImageButton
+        img_back.setOnClickListener{
+//             Replace the current fragment with a new fragment
+            this.finish()
+        }
 
         binding.tvSenin.setOnClickListener{
             startActivity(Intent(   this, JadwalNgajiActivity::class.java))

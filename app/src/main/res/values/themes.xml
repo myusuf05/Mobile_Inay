@@ -10,8 +10,6 @@
 
     </style>
 
-    <style name="Theme.MobileInay" parent="Base.Theme.MobileInay" />
-
     <style name="TextView">
         <item name="android:textSize">40sp</item>
         <item name="android:textColor">@color/bg_utama</item>
@@ -37,7 +35,8 @@
         <item name="fontFamily">@font/montserrat_regular</item>
     </style>
     <style name="TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
-        <item name="android:textColorHint">@color/white</item>
+        <item name="android:textColorHint">@color/black</item>
+
         <item name="hintTextColor">@color/white</item>
         <item name="startIconTint">@color/white</item>
         <item name="boxStrokeWidth">0dp</item>
@@ -52,5 +51,18 @@
         <item name="android:textSize">12sp</item>
         <item name="android:textStyle">bold</item>
         <item name="fontFamily">@font/montserrat_bold</item>
+    </style>
+
+    <style name="textNilai">
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">@font/montserrat_bold</item>
+        <item name="textFillColor">@color/black</item>
+
+    </style>
+    
+    <style name="textCut">
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">@font/montserrat_regular</item>
+        <item name="android:textColor">@color/black</item>
     </style>
 </resources>

@@ -39,15 +39,16 @@
         android:layout_marginTop="30dp"
         android:hint="@string/login_email"
         android:layout_marginHorizontal="24dp"
-
-
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_login">
         
-        <com.google.android.material.textfield.TextInputEditText
+        <EditText
             android:id="@+id/Tei_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/TextInputEditText"/>
+            android:inputType="textEmailAddress"
+            android:background="@drawable/border_layout_login"/>
 
     </com.google.android.material.textfield.TextInputLayout>
     <com.google.android.material.textfield.TextInputLayout
@@ -57,24 +58,22 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:hint="@string/login_password"
-
         app:passwordToggleEnabled="true"
         android:layout_marginHorizontal="24dp"
         app:layout_constraintTop_toBottomOf="@id/Tit_email">
 
-        <com.google.android.material.textfield.TextInputEditText
+        <EditText
             android:id="@+id/Tei_pass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword"
-            style="@style/TextInputEditText"
+            android:background="@drawable/border_layout_login"
             />
 
     </com.google.android.material.textfield.TextInputLayout>
 
 
     <TextView
-        android:id="@+id/lupaPas"
         style="@style/subTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -92,6 +91,8 @@
         android:layout_marginTop="30dp"
         android:text="@string/btn_login"
         android:layout_marginHorizontal="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Tit_pass"
         tools:ignore="TextSizeCheck" />
     <TextView

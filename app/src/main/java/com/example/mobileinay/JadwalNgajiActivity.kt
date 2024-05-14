@@ -31,10 +31,7 @@ class JadwalNgajiActivity : AppCompatActivity() {
         // Set click listener on the ImageButton
         img_back.setOnClickListener{
 //             Replace the current fragment with a new fragment
-            val transaction = supportFragmentManager.beginTransaction()
-                transaction.replace(R.id.Fragment_home, HomeFragment())
-                transaction.addToBackStack(null) // Optional: Add the transaction to the back stack
-                transaction.commit()
+            this.finish()
         }
 
         binding.tvSenin.setOnClickListener{

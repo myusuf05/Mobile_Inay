@@ -44,7 +44,7 @@
 
 
                         <TextView
-                            android:id="@+id/textView2"
+                            android:id="@+id/NamaUser"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Muhamad Yusuf"
@@ -55,7 +55,6 @@
                             app:layout_constraintStart_toStartOf="@id/textView"/>
 
                         <ImageView
-                            android:id="@+id/imageView2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="16dp"
@@ -68,7 +67,6 @@
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                     <EditText
-                        android:id="@+id/editTextText"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:layout_marginStart="32dp"
@@ -105,7 +103,6 @@
                             android:layout_width="match_parent"
                             android:layout_height="160dp">
                             <ImageView
-                                android:id="@+id/imageView3"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:scaleType="fitXY"
@@ -153,7 +150,6 @@
                                 app:layout_constraintTop_toBottomOf="@id/textView4" />
 
                             <TextView
-                                android:id="@+id/textView6"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="40dp"
@@ -173,7 +169,6 @@
                             >
 
                             <ImageView
-                                android:id="@+id/imageView4"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:scaleType="fitXY"
@@ -224,7 +219,6 @@
                                 app:layout_constraintTop_toBottomOf="@id/Mapel2" />
 
                             <TextView
-                                android:id="@+id/Jam"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="40dp"
@@ -243,7 +237,6 @@
                 </HorizontalScrollView>
 
                 <TextView
-                    android:id="@+id/textView7"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
@@ -274,7 +267,6 @@
                             tools:ignore="SpeakableTextPresentCheck" />
 
                         <TextView
-                            android:id="@+id/tvNilai"
                             style="@style/SubJudul"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -299,7 +291,6 @@
 
 
                         <TextView
-                            android:id="@+id/tv_jadwal_ngaji"
                             style="@style/SubJudul"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -315,34 +306,36 @@
                         android:orientation="vertical">
 
                         <ImageButton
-                            android:id="@+id/imageView6"
+                            android:id="@+id/majmu"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:backgroundTint="@color/white"
 
-                            android:src="@drawable/evluasi"
+                            android:src="@drawable/jadwal"
                             tools:ignore="SpeakableTextPresentCheck" />
 
                         <TextView
-                            android:id="@+id/textView9"
                             style="@style/SubJudul"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
 
-                            android:text="Evaluasi" />
+                            android:text="Maj'mu" />
                     </LinearLayout>
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:layout_marginStart="33dp"
+                    >
 
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_marginTop="20dp"
+                        android:layout_marginEnd="30dp"
                         android:layout_weight="0.2"
                         android:orientation="vertical">
 
@@ -351,11 +344,10 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:backgroundTint="@color/white"
-                            app:srcCompat="@drawable/jadwal"
+                            android:src="@drawable/raport"
                             tools:ignore="SpeakableTextPresentCheck" />
 
                         <TextView
-                            android:id="@+id/tvKeamanan"
                             style="@style/SubJudul"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -366,6 +358,7 @@
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
+                        android:layout_marginStart="30dp"
                         android:layout_marginTop="20dp"
                         android:layout_weight="0.2"
                         android:orientation="vertical">
@@ -375,11 +368,10 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:backgroundTint="@color/white"
-                            android:src="@drawable/raport"
+                            android:src="@drawable/buku"
                             tools:ignore="SpeakableTextPresentCheck" />
 
                         <TextView
-                            android:id="@+id/tv_raport"
                             style="@style/SubJudul"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -387,30 +379,6 @@
                             android:text="Raport" />
                     </LinearLayout>
 
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="20dp"
-                        android:layout_weight="0.2"
-                        android:orientation="vertical">
-
-                        <ImageButton
-                            android:id="@+id/img_majmu"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:backgroundTint="@color/white"
-                            android:src="@drawable/buku"
-                            tools:ignore="SpeakableTextPresentCheck" />
-
-                        <TextView
-                            android:id="@+id/tv_majmu"
-                            style="@style/SubJudul"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
-
-                            android:text="Maj'mu" />
-                    </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
 
