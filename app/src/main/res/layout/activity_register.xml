@@ -26,27 +26,48 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/img_reg" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/Tit_user"
-        style="@style/TextInputLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:hint="@string/username"
-        app:startIconDrawable="@drawable/person_emil"
-        android:layout_marginHorizontal="24dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_login">
+<!--    <com.google.android.material.textfield.TextInputLayout-->
+<!--        android:id="@+id/Tit_user"-->
+<!--        style="@style/TextInputLayout"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="30dp"-->
+<!--        android:hint="@string/username"-->
+<!--        app:startIconDrawable="@drawable/person_emil"-->
+<!--        android:layout_marginHorizontal="24dp"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/tv_login">-->
 
-        <EditText
-            android:id="@+id/Tei_user"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            android:background="@drawable/border_layout_login"/>
+<!--        <EditText-->
+<!--            android:id="@+id/Tei_user"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:inputType="textPersonName"-->
+<!--            android:background="@drawable/border_layout_login"/>-->
 
-    </com.google.android.material.textfield.TextInputLayout>
+<!--    </com.google.android.material.textfield.TextInputLayout>-->
+<!--    <com.google.android.material.textfield.TextInputLayout-->
+<!--        android:id="@+id/Tit_kelas"-->
+<!--        style="@style/TextInputLayout"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="10dp"-->
+<!--        android:hint="@string/Kelas"-->
+<!--        app:startIconDrawable="@drawable/person_emil"-->
+<!--        android:layout_marginHorizontal="24dp"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/tv_login">-->
+
+<!--        <EditText-->
+<!--            android:id="@+id/Tei_kelas"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:inputType="textPersonName"-->
+<!--            android:background="@drawable/border_layout_login"/>-->
+
+<!--    </com.google.android.material.textfield.TextInputLayout>-->
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/Tit_email"
         style="@style/TextInputLayout"
@@ -58,7 +79,7 @@
         android:layout_marginHorizontal="24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/Tit_user">
+        app:layout_constraintTop_toBottomOf="@id/tv_login">
 
         <EditText
             android:id="@+id/Tei_email"

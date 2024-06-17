@@ -26,7 +26,7 @@ class LoginActivity : AppCompatActivity() {
 //    override fun onStart(){
 //        super.onStart()
 //        if(firebaseAuth.currentUser!=null){
-//            startActivity(Intent(this, HomeFragment::class.java))
+//            startActivity(Intent(this, HomeActivity::class.java))
 //        }
 //    }
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -63,6 +63,8 @@ class LoginActivity : AppCompatActivity() {
         firebaseAuth.signInWithEmailAndPassword(email, pass)
             .addOnSuccessListener {
                 startActivity(Intent(this, HomeActivity::class.java))
+                editTieEmail.text.clear()
+                editTiePass.text.clear()
             }
             .addOnFailureListener { error ->
                 Toast.makeText(this, error.localizedMessage, LENGTH_SHORT).show()

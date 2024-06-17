@@ -23,26 +23,26 @@ class JadNgaSabActivity : AppCompatActivity() {
             this.finish()
         }
 
-        binding.tvSenin.setOnClickListener{
-            startActivity(Intent(   this, JadwalNgajiActivity::class.java))
-        }
-        binding.tvSelasa.setOnClickListener {
-            startActivity(Intent(this, JadNgaSelasaActivity::class.java))
-        }
-        binding.tvRabu.setOnClickListener{
-            startActivity(Intent(   this, JadNgaRabuActivity::class.java))
-        }
-        binding.tvKamis.setOnClickListener {
-            startActivity(Intent(this, JadNgaKamActivity::class.java))
-        }
-        binding.tvJumat.setOnClickListener{
-            startActivity(Intent(   this, JadNgaJumActivity::class.java))
-        }
-        binding.tvSabtu.setOnClickListener {
-            startActivity(Intent(this, JadNgaSabActivity::class.java))
-        }
-        binding.tvMinggu.setOnClickListener{
-            startActivity(Intent(   this, JadNgaMingActivity::class.java))
-        }
+//        binding.tvSenin.setOnClickListener{
+//            startActivity(Intent(   this, JadwalNgajiActivity::class.java))
+//        }
+//        binding.tvSelasa.setOnClickListener {
+//            startActivity(Intent(this, JadNgaSelasaActivity::class.java))
+//        }
+//        binding.tvRabu.setOnClickListener{
+//            startActivity(Intent(   this, JadNgaRabuActivity::class.java))
+//        }
+//        binding.tvKamis.setOnClickListener {
+//            startActivity(Intent(this, JadNgaKamActivity::class.java))
+//        }
+//        binding.tvJumat.setOnClickListener{
+//            startActivity(Intent(   this, JadNgaJumActivity::class.java))
+//        }
+//        binding.tvSabtu.setOnClickListener {
+//            startActivity(Intent(this, JadNgaSabActivity::class.java))
+//        }
+//        binding.tvMinggu.setOnClickListener{
+//            startActivity(Intent(   this, JadNgaMingActivity::class.java))
+//        }
     }
 }

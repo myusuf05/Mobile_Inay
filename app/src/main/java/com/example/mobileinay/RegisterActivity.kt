@@ -17,6 +17,7 @@ import com.google.firebase.ktx.Firebase
 class RegisterActivity : AppCompatActivity() {
 
     lateinit var editTeiUser: EditText
+    lateinit var editTeiKelas: EditText
     lateinit var editTieEmail:EditText
     lateinit var editTiePass:EditText
     lateinit var editTieConfPass:EditText
@@ -38,7 +39,6 @@ class RegisterActivity : AppCompatActivity() {
         setContentView(R.layout.activity_register)
         supportActionBar?.hide()
 
-        editTeiUser = findViewById(R.id.Tei_user)
         editTieEmail = findViewById(R.id.Tei_email)
         editTiePass = findViewById(R.id.Tei_pass)
         editTieConfPass = findViewById(R.id.Tei_ConfPass)
@@ -54,7 +54,8 @@ class RegisterActivity : AppCompatActivity() {
         }
 
         btnReg.setOnClickListener{
-            if (editTeiUser.text.isNotEmpty() && editTieEmail.text.isNotEmpty() && editTiePass.text.isNotEmpty()){
+            if (editTeiUser.text.isNotEmpty() && editTeiKelas.text.isNotEmpty()
+                && editTieEmail.text.isNotEmpty() && editTiePass.text.isNotEmpty()){
                 if (editTiePass.text.toString() == editTieConfPass.text.toString()){
                     //Menampilkan Register
                     processRegister()
@@ -68,6 +69,7 @@ class RegisterActivity : AppCompatActivity() {
     }
     private fun processRegister(){
         val userName = editTeiUser.text.toString()
+        val kelas = editTeiKelas.text.toString()
         val email = editTieEmail.text.toString()
         val pass = editTiePass.text.toString()
 
@@ -77,12 +79,16 @@ class RegisterActivity : AppCompatActivity() {
                 if (task.isSuccessful){
                     val userUpdateProfile = userProfileChangeRequest {
                         displayName = userName
+                        val kelas = hashMapOf(
+                            "kelas" to kelas,
+                            "email" to email
+                        )
                     }
                     val user = task.result.user
                     user!!.updateProfile(userUpdateProfile)
                         .addOnCompleteListener {
                             progressDialog.dismiss()
-                            startActivity(Intent(this, HomeActivity::class.java))
+                            startActivity(Intent(this, DatadiriActivity::class.java))
                         }
                         .addOnFailureListener { error2 ->
                             Toast.makeText(this, error2.localizedMessage, LENGTH_SHORT).show()
