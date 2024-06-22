@@ -16,12 +16,8 @@ import com.example.mobileinay.ui.register.RegisterActivity
 import com.google.firebase.auth.FirebaseAuth
 
 class LoginActivity : AppCompatActivity() {
-    private lateinit var btnLogin:Button
-    private lateinit var logReg:TextView
     private lateinit var progressDialog: ProgressDialog
-
     private lateinit var loginBinding: ActivityLoginBinding
-
     private var firebaseAuth = FirebaseAuth.getInstance()
 
 //    override fun onStart(){
@@ -36,21 +32,18 @@ class LoginActivity : AppCompatActivity() {
         setContentView(loginBinding.root)
         supportActionBar?.hide()
 
-        logReg = findViewById(R.id.log_reg)
-        btnLogin = findViewById(R.id.btn_login)
-
         progressDialog = ProgressDialog(this)
         progressDialog.setTitle("Logging")
         progressDialog.setMessage("Silahkan Tunggu..")
 
-        btnLogin.setOnClickListener{
+        loginBinding.btnLogin.setOnClickListener{
             if (loginBinding.TeiEmail.text.isNotEmpty() && loginBinding.TeiPass.text.isNotEmpty()){
                 prosesLogin()
             }else{
                 Toast.makeText(this, "Silahkan Isi Email dan Password terlebih dahulu", LENGTH_SHORT).show()
             }
         }
-        logReg.setOnClickListener {
+        loginBinding.logReg.setOnClickListener {
             startActivity(Intent(this, RegisterActivity::class.java))
         }
     }

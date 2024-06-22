@@ -11,56 +11,30 @@ import android.widget.Toast
 import android.widget.Toast.LENGTH_SHORT
 import com.example.mobileinay.DatadiriActivity
 import com.example.mobileinay.R
+import com.example.mobileinay.databinding.ActivityRegisterBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.userProfileChangeRequest
 import com.google.firebase.firestore.FirebaseFirestore
 
 class RegisterActivity : AppCompatActivity() {
-
-    lateinit var editTeiUser: EditText
-    lateinit var editTeiKelas: EditText
-    lateinit var editTeiAlamat: EditText
-    lateinit var editTieEmail:EditText
-    lateinit var editTiePass:EditText
-    lateinit var editTieConfPass:EditText
-    lateinit var logReg:TextView
-    lateinit var btnReg:Button
-    lateinit var progressDialog: ProgressDialog
-
-    var firebaseAuth = FirebaseAuth.getInstance()
+    private lateinit var progressDialog: ProgressDialog
+    private var firebaseAuth = FirebaseAuth.getInstance()
     private lateinit var db: FirebaseFirestore
+    private lateinit var registerBinding: ActivityRegisterBinding
 
-    override fun onStart(){
-        super.onStart()
-//        if(firebaseAuth.currentUser!=null){
-//            startActivity(Intent(this, HomeActivity::class.java))
-//        }
-    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        binding = ActivityRegisterBinding.inflate(layoutInflater)
-        setContentView(R.layout.activity_register)
+        registerBinding = ActivityRegisterBinding.inflate(layoutInflater)
+        setContentView(registerBinding.root)
         supportActionBar?.hide()
-
-
-        editTieEmail = findViewById(R.id.Tei_email)
-        editTiePass = findViewById(R.id.Tei_pass)
-        editTieConfPass = findViewById(R.id.Tei_ConfPass)
-        btnReg = findViewById(R.id.btn_Reg)
-        logReg = findViewById(R.id.log_reg)
 
         progressDialog = ProgressDialog(this)
         progressDialog.setTitle("Proses")
         progressDialog.setMessage("Silahkan Tunggu..")
 
-        logReg.setOnClickListener {
-            startActivity(Intent(this, DatadiriActivity::class.java))
-        }
-
-        btnReg.setOnClickListener{
-            if (editTeiUser.text.isNotEmpty() && editTeiKelas.text.isNotEmpty()
-                && editTieEmail.text.isNotEmpty() && editTiePass.text.isNotEmpty()){
-                if (editTiePass.text.toString() == editTieConfPass.text.toString()){
+        registerBinding.btnReg.setOnClickListener{
+            if (registerBinding.TeiEmail.text.isNotEmpty() && registerBinding.TeiPass.text.isNotEmpty()){
+                if (registerBinding.TeiPass.text.toString() == registerBinding.TeiConfPass.text.toString()){
                     //Menampilkan Register
                     processRegister()
                 }else{
@@ -72,31 +46,14 @@ class RegisterActivity : AppCompatActivity() {
         }
     }
     private fun processRegister(){
-        val userName = editTeiUser.text.toString()
-        val kelas = editTeiKelas.text.toString()
-        val email = editTieEmail.text.toString()
-        val pass = editTiePass.text.toString()
+        val email = registerBinding.TeiEmail.text.toString()
+        val pass = registerBinding.TeiPass.text.toString()
 
         progressDialog.show()
         firebaseAuth.createUserWithEmailAndPassword(email, pass)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful){
-                    val userUpdateProfile = userProfileChangeRequest {
-                        displayName = userName
-                        val kelas = hashMapOf(
-                            "kelas" to kelas,
-                            "email" to email
-                        )
-                    }
-                    val user = task.result.user
-                    user!!.updateProfile(userUpdateProfile)
-                        .addOnCompleteListener {
-                            progressDialog.dismiss()
-                            startActivity(Intent(this, DatadiriActivity::class.java))
-                        }
-                        .addOnFailureListener { error2 ->
-                            Toast.makeText(this, error2.localizedMessage, LENGTH_SHORT).show()
-                        }
+                    startActivity(Intent(this, DatadiriActivity::class.java))
                 }else{
                     progressDialog.dismiss()
                 }
