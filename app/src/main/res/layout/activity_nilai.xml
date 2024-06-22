@@ -147,117 +147,13 @@
 
     </LinearLayout>
 
-    <LinearLayout
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_margin="30dp"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:orientation="horizontal"
-        android:layout_marginTop="40dp"
-        android:layout_marginStart="25dp"
-        android:layout_marginEnd="30dp"
-        android:gravity="center_vertical"
-        android:background="@drawable/bg_button">
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        tools:listitem="@layout/card_sub_nilai"/>
 
-        <TextView
-            style="@style/textNilai"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:text="Fiqh (Kitab Safinatunnajah)" />
 
-        <TextView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginStart="70dp"
-            android:background="@drawable/edittext_background"
-            android:gravity="center"
-            android:text="5"
-            style="@style/textNilai"
-            />
-
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:orientation="horizontal"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="25dp"
-        android:layout_marginEnd="30dp"
-        android:gravity="center_vertical"
-        android:background="@drawable/bg_button">
-
-        <TextView
-            style="@style/textNilai"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:text="Nahwa (Jurumiyah)" />
-
-        <TextView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginStart="70dp"
-            android:background="@drawable/edittext_background"
-            android:gravity="center"
-            android:text="5"
-            style="@style/textNilai"
-            />
-
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:orientation="horizontal"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="25dp"
-        android:layout_marginEnd="30dp"
-        android:gravity="center_vertical"
-        android:background="@drawable/bg_button">
-
-        <TextView
-            style="@style/textNilai"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:text="Akhlak (Talim wa Mutaalim)" />
-
-        <TextView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginStart="70dp"
-            android:background="@drawable/edittext_background"
-            android:gravity="center"
-            android:text="5"
-            style="@style/textNilai"
-            />
-
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:orientation="horizontal"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="25dp"
-        android:layout_marginEnd="30dp"
-        android:gravity="center_vertical"
-        android:background="@drawable/bg_button">
-
-        <TextView
-            style="@style/textNilai"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:text="Fahtul Qorib" />
-
-        <TextView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginStart="70dp"
-            android:background="@drawable/edittext_background"
-            android:gravity="center"
-            android:text="5"
-            style="@style/textNilai"
-            />
-
-    </LinearLayout>
 
 </LinearLayout>

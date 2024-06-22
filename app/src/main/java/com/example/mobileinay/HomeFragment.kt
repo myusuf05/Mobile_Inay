@@ -12,6 +12,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -49,6 +50,7 @@ class HomeFragment : Fragment() {
         val Nameuser =  view?.findViewById<TextView>(R.id.NamaUser)
 
         val firebaseAuth = FirebaseAuth.getInstance()
+        val db = FirebaseFirestore.getInstance()
 
 
         //find the ImageButton in the layout
@@ -60,7 +62,7 @@ class HomeFragment : Fragment() {
 
 //        Set Nama User
         val firebaseUser = firebaseAuth.currentUser
-        Log.e("faqih", "${firebaseUser?.displayName}")
+
         if (firebaseUser!=null){
 
             Nameuser?.setText("${firebaseUser?.displayName}")

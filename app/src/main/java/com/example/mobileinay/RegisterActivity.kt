@@ -12,12 +12,14 @@ import android.widget.Toast.LENGTH_SHORT
 import com.example.mobileinay.databinding.ActivityRegisterBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.userProfileChangeRequest
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 
 class RegisterActivity : AppCompatActivity() {
 
     lateinit var editTeiUser: EditText
     lateinit var editTeiKelas: EditText
+    lateinit var editTeiAlamat: EditText
     lateinit var editTieEmail:EditText
     lateinit var editTiePass:EditText
     lateinit var editTieConfPass:EditText
@@ -26,6 +28,7 @@ class RegisterActivity : AppCompatActivity() {
     lateinit var progressDialog: ProgressDialog
 
     var firebaseAuth = FirebaseAuth.getInstance()
+    private lateinit var db: FirebaseFirestore
 
     override fun onStart(){
         super.onStart()
@@ -39,6 +42,7 @@ class RegisterActivity : AppCompatActivity() {
         setContentView(R.layout.activity_register)
         supportActionBar?.hide()
 
+
         editTieEmail = findViewById(R.id.Tei_email)
         editTiePass = findViewById(R.id.Tei_pass)
         editTieConfPass = findViewById(R.id.Tei_ConfPass)
@@ -50,7 +54,7 @@ class RegisterActivity : AppCompatActivity() {
         progressDialog.setMessage("Silahkan Tunggu..")
 
         logReg.setOnClickListener {
-            startActivity(Intent(this, LoginActivity::class.java))
+            startActivity(Intent(this, DatadiriActivity::class.java))
         }
 
         btnReg.setOnClickListener{
