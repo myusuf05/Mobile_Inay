@@ -1,4 +1,4 @@
-package com.example.mobileinay
+package com.example.mobileinay.ui.login
 
 import android.app.ProgressDialog
 import android.content.Intent
@@ -9,7 +9,9 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import android.widget.Toast.LENGTH_SHORT
-import com.example.mobileinay.databinding.ActivityLoginBinding
+import com.example.mobileinay.ui.home.HomeActivity
+import com.example.mobileinay.R
+import com.example.mobileinay.ui.register.RegisterActivity
 import com.google.firebase.auth.FirebaseAuth
 
 class LoginActivity : AppCompatActivity() {

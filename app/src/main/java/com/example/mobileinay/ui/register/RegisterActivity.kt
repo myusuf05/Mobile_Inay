@@ -1,4 +1,4 @@
-package com.example.mobileinay
+package com.example.mobileinay.ui.register
 
 import android.app.ProgressDialog
 import android.content.Intent
@@ -9,11 +9,11 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import android.widget.Toast.LENGTH_SHORT
-import com.example.mobileinay.databinding.ActivityRegisterBinding
+import com.example.mobileinay.DatadiriActivity
+import com.example.mobileinay.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.userProfileChangeRequest
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.ktx.Firebase
 
 class RegisterActivity : AppCompatActivity() {
 

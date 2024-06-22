@@ -1,10 +1,12 @@
-package com.example.mobileinay
+package com.example.mobileinay.ui
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import com.example.mobileinay.R
+import com.example.mobileinay.ui.login.LoginActivity
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -17,7 +19,7 @@ class MainActivity : AppCompatActivity() {
         }, 3000L)
     }
     private fun goToLoginActivity(){
-        Intent(this,LoginActivity::class.java).also {
+        Intent(this, LoginActivity::class.java).also {
             startActivity(it)
             finish()
         }

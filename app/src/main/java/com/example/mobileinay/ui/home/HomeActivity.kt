@@ -1,16 +1,14 @@
-package com.example.mobileinay
+package com.example.mobileinay.ui.home
 
-import android.annotation.SuppressLint
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
+import com.example.mobileinay.HomeFragment
+import com.example.mobileinay.MapelFragment
+import com.example.mobileinay.ProfileFragment
+import com.example.mobileinay.R
+import com.example.mobileinay.TagihanFragment
 import com.example.mobileinay.databinding.ActivityHomeBinding
-import com.google.android.material.bottomnavigation.BottomNavigationView
-
-import com.google.firebase.auth.FirebaseAuth
 
 
 class HomeActivity : AppCompatActivity() {
