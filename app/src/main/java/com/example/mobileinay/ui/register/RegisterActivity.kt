@@ -53,7 +53,7 @@ class RegisterActivity : AppCompatActivity() {
         firebaseAuth.createUserWithEmailAndPassword(email, pass)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful){
-                    startActivity(Intent(this, DatadiriActivity::class.java))
+                    this.finish()
                 }else{
                     progressDialog.dismiss()
                 }

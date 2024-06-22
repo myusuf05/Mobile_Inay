@@ -4,89 +4,75 @@ import android.app.ProgressDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.Toast
+import com.example.mobileinay.databinding.ActivityDatadiriBinding
 import com.example.mobileinay.ui.home.HomeActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
 class DatadiriActivity : AppCompatActivity() {
-    private lateinit var etName: EditText
-    private lateinit var etKelas: EditText
-    private lateinit var etAlamat: EditText
-    private lateinit var btnSave: Button
-
-    private lateinit var progressBar: ProgressBar
     lateinit var progressDialog: ProgressDialog
+    private var firebaseAuth = FirebaseAuth.getInstance()
+    private var firestore = FirebaseFirestore.getInstance()
+    private lateinit var datadiriBinding: ActivityDatadiriBinding
+    private lateinit var userEmail: String
 
-    private lateinit var auth: FirebaseAuth
-    private lateinit var db: FirebaseFirestore
+    override fun onStart() {
+        super.onStart()
+        firestore.collection("user").document(userEmail).get()
+            .addOnSuccessListener { document ->
+                if (document.data != null) goToHome()
+            }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_datadiri)
+        datadiriBinding = ActivityDatadiriBinding.inflate(layoutInflater)
+        setContentView(datadiriBinding.root)
 
-        etName = findViewById(R.id.etName)
-        etKelas = findViewById(R.id.etKelas)
-        etAlamat = findViewById(R.id.etAlamat)
-        btnSave = findViewById(R.id.btnRegister)
-        //progressBar = findViewById()
+        progressDialog = ProgressDialog(this)
+        progressDialog.setTitle("Proses")
+        progressDialog.setMessage("Silahkan Tunggu..")
 
-        auth = FirebaseAuth.getInstance()
-        db = FirebaseFirestore.getInstance()
+        val loggedInEmail = firebaseAuth.currentUser?.email
+        if (loggedInEmail != null) {
+            userEmail = loggedInEmail
+            Toast.makeText(this, userEmail, Toast.LENGTH_SHORT).show()
+        } else {
+            finish()
+        }
 
-        btnSave.setOnClickListener{
-
-            val sName = etName.text.toString().trim()
-            val sKelas = etKelas.text.toString().trim()
-            val sAlamat = etAlamat.text.toString().trim()
-
+        datadiriBinding.btnRegister.setOnClickListener{
+            val sName = datadiriBinding.etName.text.toString().trim()
+            val sKelas = datadiriBinding.etKelas.text.toString().trim()
+            val sAlamat = datadiriBinding.etAlamat.text.toString().trim()
             if (sName.isEmpty() || sKelas.isEmpty() || sAlamat.isEmpty()) {
-                prosesLogin()
                 Toast.makeText(this, "Please fill all fields", Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
             }
-
-            val userMap = hashMapOf(
-                "nama" to sName,
-                "kelas" to sKelas,
-                "alamat" to sAlamat
-            )
-
-            val userId = FirebaseAuth.getInstance().currentUser!!.uid
-            db.collection("user").document(userId).set(userMap)
-                .addOnSuccessListener {
-                    Toast.makeText(this, "sucess", Toast.LENGTH_SHORT).show()
-                    etName.text.clear()
-                    etKelas.text.clear()
-                    etAlamat.text.clear()
-                    startActivity(Intent(this, HomeActivity::class.java))
-                }
-                .addOnFailureListener {
-                    Toast.makeText(this,"Gagal", Toast.LENGTH_SHORT).show()
-                }
+            insertUser(sName, sKelas, sAlamat)
         }
     }
 
-    private fun prosesLogin() {
-        val sName = etName.text.toString().trim()
-        val sKelas = etKelas.text.toString().trim()
-        val sAlamat = etAlamat.text.toString().trim()
+    private fun goToHome() {
+        startActivity(Intent(this, HomeActivity::class.java))
+    }
 
-//        progressDialog.show()
-//        firebaseAuth.sign(sName, sKelas, sAlamat)
-//            .addOnSuccessListener {
-//                startActivity(Intent(this, HomeActivity::class.java))
-//                etName.text.clear()
-//                etKelas.text.clear()
-//                etAlamat.text.clear()
-//            }
-//            .addOnFailureListener { error ->
-//                Toast.makeText(this, error.localizedMessage, Toast.LENGTH_SHORT).show()
-//            }
-//            .addOnCompleteListener {
-//                progressDialog.dismiss()
-//            }
+    private fun insertUser(nama: String, kelas: String, alamat: String) {
+        val userMap = hashMapOf(
+            "nama" to nama,
+            "kelas" to kelas,
+            "alamat" to alamat
+        )
+        firestore.collection("user").document(userEmail).set(userMap)
+            .addOnSuccessListener {
+                goToHome()
+            }
+            .addOnFailureListener {
+                Toast.makeText(this,"Gagal menyimpan data", Toast.LENGTH_SHORT).show()
+            }
     }
 }
