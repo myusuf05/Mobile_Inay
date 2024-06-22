@@ -11,19 +11,18 @@ import android.widget.Toast
 import android.widget.Toast.LENGTH_SHORT
 import com.example.mobileinay.ui.home.HomeActivity
 import com.example.mobileinay.R
+import com.example.mobileinay.databinding.ActivityLoginBinding
 import com.example.mobileinay.ui.register.RegisterActivity
 import com.google.firebase.auth.FirebaseAuth
 
 class LoginActivity : AppCompatActivity() {
+    private lateinit var btnLogin:Button
+    private lateinit var logReg:TextView
+    private lateinit var progressDialog: ProgressDialog
 
-    lateinit var editTieEmail: EditText
-    lateinit var editTiePass: EditText
-    lateinit var btnLogin:Button
-    lateinit var logReg:TextView
-    lateinit var progressDialog: ProgressDialog
+    private lateinit var loginBinding: ActivityLoginBinding
 
-
-    var firebaseAuth = FirebaseAuth.getInstance()
+    private var firebaseAuth = FirebaseAuth.getInstance()
 
 //    override fun onStart(){
 //        super.onStart()
@@ -33,11 +32,10 @@ class LoginActivity : AppCompatActivity() {
 //    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
+        loginBinding = ActivityLoginBinding.inflate(layoutInflater)
+        setContentView(loginBinding.root)
         supportActionBar?.hide()
 
-        editTieEmail = findViewById(R.id.Tei_email)
-        editTiePass = findViewById(R.id.Tei_pass)
         logReg = findViewById(R.id.log_reg)
         btnLogin = findViewById(R.id.btn_login)
 
@@ -46,7 +44,7 @@ class LoginActivity : AppCompatActivity() {
         progressDialog.setMessage("Silahkan Tunggu..")
 
         btnLogin.setOnClickListener{
-            if (editTieEmail.text.isNotEmpty()&& editTiePass.text.isNotEmpty()){
+            if (loginBinding.TeiEmail.text.isNotEmpty() && loginBinding.TeiPass.text.isNotEmpty()){
                 prosesLogin()
             }else{
                 Toast.makeText(this, "Silahkan Isi Email dan Password terlebih dahulu", LENGTH_SHORT).show()
@@ -58,15 +56,15 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun prosesLogin() {
-        val email = editTieEmail.text.toString()
-        val pass = editTiePass.text.toString()
+        val email = loginBinding.TeiEmail.text.toString()
+        val pass = loginBinding.TeiPass.text.toString()
 
         progressDialog.show()
         firebaseAuth.signInWithEmailAndPassword(email, pass)
             .addOnSuccessListener {
                 startActivity(Intent(this, HomeActivity::class.java))
-                editTieEmail.text.clear()
-                editTiePass.text.clear()
+                loginBinding.TeiEmail.text.clear()
+                loginBinding.TeiPass.text.clear()
             }
             .addOnFailureListener { error ->
                 Toast.makeText(this, error.localizedMessage, LENGTH_SHORT).show()
