@@ -41,7 +41,6 @@ class DatadiriActivity : AppCompatActivity() {
         val loggedInEmail = firebaseAuth.currentUser?.email
         if (loggedInEmail != null) {
             userEmail = loggedInEmail
-            Toast.makeText(this, userEmail, Toast.LENGTH_SHORT).show()
         } else {
             finish()
         }
@@ -59,6 +58,7 @@ class DatadiriActivity : AppCompatActivity() {
 
     private fun goToHome() {
         startActivity(Intent(this, HomeActivity::class.java))
+        finish()
     }
 
     private fun insertUser(nama: String, kelas: String, alamat: String) {

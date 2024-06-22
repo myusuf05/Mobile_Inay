@@ -63,6 +63,7 @@ class ProfileFragment : Fragment() {
 //        Bottom LogOut
 
         btnLogout?.setOnClickListener{
+            firebaseAuth.signOut()
             this.activity?.finish()
         }
         return view
