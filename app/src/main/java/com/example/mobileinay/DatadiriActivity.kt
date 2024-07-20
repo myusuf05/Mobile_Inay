@@ -75,4 +75,5 @@ class DatadiriActivity : AppCompatActivity() {
                 Toast.makeText(this,"Gagal menyimpan data", Toast.LENGTH_SHORT).show()
             }
     }
+
 }

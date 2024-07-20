@@ -31,15 +31,16 @@
                         android:id="@+id/img_back"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="?attr/selectableItemBackground"
-                        android:src="@drawable/arrowleft"
-                        app:tint="@color/white"
-                        android:onClick="onImageButtonClick"
-                        android:layout_marginTop="13dp"
                         android:layout_marginStart="10dp"
+                        android:layout_marginTop="13dp"
+                        android:background="?attr/selectableItemBackground"
+                        android:onClick="onImageButtonClick"
+                        android:src="@drawable/arrowleft"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"/>
+                        app:tint="@color/white"
+                        tools:ignore="SpeakableTextPresentCheck" />
 
                     <TextView
                         android:id="@+id/textView"
@@ -81,7 +82,6 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:backgroundTint="@color/bg_edit_text">
-                >
 
                 <TextView
                     android:id="@+id/tvSenin"

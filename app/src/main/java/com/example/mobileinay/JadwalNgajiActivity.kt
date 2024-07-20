@@ -1,18 +1,12 @@
 package com.example.mobileinay
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.view.View
-import android.widget.ImageButton
 import android.widget.Toast
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.mobileinay.databinding.ActivityJadwalNgajiBinding
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -21,13 +15,13 @@ import kotlinx.coroutines.withContext
 
 class JadwalNgajiActivity : AppCompatActivity() {
 
-    private val dbName = "pendidikaninay"
+    private val dbName = "jadwal"
 
     private lateinit var db:FirebaseFirestore
+    private var firebaseAuth = FirebaseAuth.getInstance()
 
     private lateinit var binding: ActivityJadwalNgajiBinding
 
-    private lateinit var jadwalList: ArrayList<CardMapel>
     private lateinit var jadwalAdapter: JadwalAdapter
 
 
@@ -47,7 +41,7 @@ class JadwalNgajiActivity : AppCompatActivity() {
         // Menyiapkan recycler view
         binding.rvCard.setHasFixedSize(true)
         binding.rvCard.layoutManager = LinearLayoutManager(this)
-        fetchData(0)
+        fetchData("senin")
     }
     private fun prepareView() {
         binding.imgBack.setOnClickListener{
@@ -55,50 +49,45 @@ class JadwalNgajiActivity : AppCompatActivity() {
             this.finish()
         }
         binding.tvSenin.setOnClickListener{
-//            startActivity(Intent(   this, JadwalNgajiActivity::class.java))
-            fetchData(0)
+            fetchData("senin")
         }
         binding.tvSelasa.setOnClickListener {
-//            startActivity(Intent(this, JadNgaSelasaActivity::class.java))
-            fetchData(1)
+            fetchData("selasa")
         }
         binding.tvRabu.setOnClickListener{
-//            startActivity(Intent(   this, JadNgaRabuActivity::class.java))
+            fetchData("rabu")
         }
         binding.tvKamis.setOnClickListener {
-//            startActivity(Intent(this, JadNgaKamActivity::class.java))
+            fetchData("kamis")
         }
         binding.tvJumat.setOnClickListener{
-//            startActivity(Intent(   this, JadNgaJumActivity::class.java))
+            fetchData("jum'at")
         }
         binding.tvSabtu.setOnClickListener {
-//            startActivity(Intent(this, JadNgaSabActivity::class.java))
+            fetchData("sabtu")
         }
         binding.tvMinggu.setOnClickListener{
-//            startActivity(Intent(   this, JadNgaMingActivity::class.java))
+            fetchData( "minggu")
         }
     }
-    private fun fetchData(hari: Int) {
+    private fun fetchData( hari: String) {
         CoroutineScope(Dispatchers.IO).launch {
             try {
-                val kelasSnapshot = db.collection(dbName).document(hari.toString())
-                    .collection("kelas")
+                val kelascolletion = db.collection("user").document(firebaseAuth.currentUser?.email.toString())
+                    .get().await()
+                val jadwal = db.collection(dbName).document(kelascolletion.getString("kelas").toString())
+                    .collection(hari)
                     .get().await()
                 val listKegiatan = ArrayList<CardMapel>()
-                for (documentKelas in kelasSnapshot.documents) {
-                    val kelasId = documentKelas.id
-                    val kegiatanSnapshot = db.collection(dbName).document(hari.toString())
-                        .collection("kelas").document(kelasId).collection("kegiatan").get()
-                        .await()
-                    for(documentKegiatan in kegiatanSnapshot.documents) {
-                        listKegiatan.add(
-                            CardMapel(
-                                documentKegiatan.getString("namae_kegiatan"),
-                                documentKegiatan.getString("kitab"),
-                                documentKegiatan.getString("lokasi"),
-                                documentKegiatan.getString("jam"))
+                for (documentjadwal in jadwal.documents) {
+                    listKegiatan.add(
+                        CardMapel(
+                            documentjadwal.id,
+                            documentjadwal.getString("kegiatan"),
+                            documentjadwal.getString("kitab"),
+                            documentjadwal.getString("lokasi")
                         )
-                    }
+                    )
                 }
                 withContext(Dispatchers.Main) {
                     jadwalAdapter = JadwalAdapter(listKegiatan)
@@ -109,12 +98,5 @@ class JadwalNgajiActivity : AppCompatActivity() {
             }
         }
     }
-    fun getJadwalData():ArrayList<CardMapel> {
-        val jadwalList = ArrayList<CardMapel>()
-        jadwalList.add(CardMapel("Musyawarah", "Fathul Qorib", "Masjid Utara", "05:30"));
-        jadwalList.add(CardMapel("Bandongan", "Fathul Muin", "Masjid Utara", "05:30"));
-        jadwalList.add(CardMapel("Musyawarah", "Fathul Muin", "Masjid Utara", "05:30"));
-        jadwalList.add(CardMapel("Madrasah", "Fathul Muin", "Masjid Utara", "05:30"));
-        return jadwalList
-    }
+
 }

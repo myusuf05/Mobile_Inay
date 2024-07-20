@@ -30,18 +30,18 @@
                 android:layout_marginEnd="24dp">
 
                 <ImageButton
-                    android:id="@+id/img_back"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="?attr/selectableItemBackground"
-                    android:src="@drawable/arrowleft"
-                    app:tint="@color/white"
-                    android:onClick="onImageButtonClick"
-                    android:layout_marginTop="13dp"
+                    android:id="@+id/img_kembali"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
                     android:layout_marginStart="10dp"
+                    android:layout_marginTop="13dp"
+                    android:background="?attr/selectableItemBackground"
+
+                    android:src="@drawable/arrowleft"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"/>
+                    app:tint="@color/white" />
 
                 <TextView
                     android:id="@+id/textView"

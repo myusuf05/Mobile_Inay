@@ -3,6 +3,7 @@ package com.example.mobileinay.ui.home
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.replace
 import com.example.mobileinay.HomeFragment
 import com.example.mobileinay.MapelFragment
 import com.example.mobileinay.ProfileFragment
@@ -12,13 +13,21 @@ import com.example.mobileinay.databinding.ActivityHomeBinding
 
 
 class HomeActivity : AppCompatActivity() {
+
     private lateinit var binding: ActivityHomeBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
         replaceFragment(HomeFragment())
         supportActionBar?.hide()
+
+//        load HomeFragment
+        if (savedInstanceState == null){
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.Fragment_home, HomeFragment())
+        }
 
         binding.btnNv.setOnItemSelectedListener {
             when(it.itemId){

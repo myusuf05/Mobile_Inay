@@ -10,29 +10,13 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [ProfileFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class ProfileFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private lateinit var firebaseAuth: FirebaseAuth
+    private lateinit var db: FirebaseFirestore
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,55 +25,41 @@ class ProfileFragment : Fragment() {
         // Inflate the layout for this fragment
 
         val view = inflater.inflate(R.layout.fragment_profile, container, false)
-//      UserName
-        val Nameuser =  view?.findViewById<TextView>(R.id.Tv_NameUser)
-        val Pasuser = view?.findViewById<TextView>(R.id.Tv_password)
 //      btn  logout
         val btnLogout = view?.findViewById<Button>(R.id.btn_logOut)
         val firebaseAuth = FirebaseAuth.getInstance()
 
-        //        Set Nama User
-        val firebaseUser = firebaseAuth.currentUser
-//        Log.e("faqih", "${firebaseUser?.displayName}")
-        if (firebaseUser!=null){
-
-            Nameuser?.setText("${firebaseUser?.displayName}")
-            Pasuser?.setText("${firebaseUser?.displayName}")
-        }
-//        else{
-//            this.activity?.finish()
-//        }
-
 //        Bottom LogOut
-
         btnLogout?.setOnClickListener{
             firebaseAuth.signOut()
             this.activity?.finish()
         }
+
         return view
     }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val firebaseAuth = FirebaseAuth.getInstance()
+        val db = FirebaseFirestore.getInstance()
 
-    private fun logout() {
-        TODO("Not yet implemented")
-    }
-
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment ProfileFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            ProfileFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+        val user = firebaseAuth.currentUser?.email
+        if (user != null){
+            db.collection("user").document(user!!).get()
+                .addOnSuccessListener { document ->
+                    if (document != null) {
+                        val name = document.data?.get("nama")
+                        val kelas = document.data?.get("kelas")
+                        if (name != null){
+                            view?.findViewById<TextView>(R.id.Tv_NameUser)?.text = "$name"
+                            view?.findViewById<TextView>(R.id.Tv_kelas)?.text = "$kelas"
+                        }
+                    }
                 }
+                .addOnFailureListener {
+                    // Handle error
             }
+
+        }
     }
+
 }

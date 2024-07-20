@@ -22,10 +22,11 @@ class JadwalAdapter(private val jadwalList:ArrayList<CardMapel>)
             }
             override fun onBindViewHolder(holder: JadwalViewHolder, position: Int) {
                 val mapel = jadwalList[position]
-                holder.kegiatan.text = mapel.jdlKegiatan
+                holder.jam.text = mapel.jam
+                holder.kegiatan.text = mapel.kegiatan
                 holder.kitab.text = mapel.kitab
                 holder.lokasi.text = mapel.lokasi
-                holder.jam.text = mapel.jam
+
             }
 
             override fun getItemCount(): Int {
