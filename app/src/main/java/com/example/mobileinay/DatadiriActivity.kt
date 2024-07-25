@@ -50,9 +50,13 @@ class DatadiriActivity : AppCompatActivity() {
             val sKelas = datadiriBinding.etKelas.text.toString().trim()
             val sAlamat = datadiriBinding.etAlamat.text.toString().trim()
             if (sName.isEmpty() || sKelas.isEmpty() || sAlamat.isEmpty()) {
-                Toast.makeText(this, "Please fill all fields", Toast.LENGTH_SHORT).show()
+
+                Toast.makeText(this, "Silahkan isi data diri dulu", Toast.LENGTH_SHORT).show()
+            }else{
+                goToHome()
+                insertUser(sName, sKelas, sAlamat)
             }
-            insertUser(sName, sKelas, sAlamat)
+
         }
     }
 

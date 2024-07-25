@@ -36,7 +36,6 @@
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="13dp"
                     android:background="?attr/selectableItemBackground"
-
                     android:src="@drawable/arrowleft"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -55,7 +54,6 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
-
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -148,11 +146,14 @@
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/nilaiMapel"
         android:layout_margin="30dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        app:layoutManager="LinearLayoutManager"
         tools:listitem="@layout/card_sub_nilai"/>
+
 
 
 

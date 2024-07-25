@@ -8,17 +8,36 @@ import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.ImageButton
 import android.widget.Toast
+import androidx.activity.viewModels
+import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.mobileinay.databinding.ActivityNilaiBinding
 import com.google.firebase.auth.FirebaseAuth
 
 class NilaiActivity : AppCompatActivity() {
 
 
+    private lateinit var binding: ActivityNilaiBinding
+    private val nilaiView: penilain_user by viewModels()
+    private lateinit var firebaseAuth: FirebaseAuth
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_nilai)
+        binding = ActivityNilaiBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        firebaseAuth = FirebaseAuth.getInstance()
+//        val adap = nilaiAdapter()
+//        binding.nilaiMapel.layoutManager = LinearLayoutManager(this)
+//        binding.nilaiMapel.adapter = adap
+
+//        nilaiView.semesterNilai.observe(this, Observer{ listNilai ->
+//            adap.submitList(listNilai)
+//        })
+        
+//        penilain_user.nam
 
         prepareView()
-
 
         val items = listOf("Semester 1", "Semester 2")
 
@@ -44,6 +63,10 @@ class NilaiActivity : AppCompatActivity() {
             Toast.makeText(this,"Item: $itemSelected", Toast.LENGTH_SHORT).show()
         }
     }
+
+//    private fun nilaiAdapter(): Any {
+//
+//    }
 
     private fun prepareView() {
         val btnKembali: ImageButton = findViewById(R.id.img_kembali)

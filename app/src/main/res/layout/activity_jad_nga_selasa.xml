@@ -8,7 +8,7 @@
     android:layout_gravity="center"
     android:layout_marginLeft="25dp"
     android:layout_marginRight="25dp"
-    tools:context=".JadNgaSelasaActivity">
+    tools:context=".Activity_jad_Nga_Selasa">
 
     <LinearLayout
         android:layout_width="350dp"

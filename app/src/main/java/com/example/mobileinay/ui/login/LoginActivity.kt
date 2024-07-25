@@ -34,7 +34,7 @@ class LoginActivity : AppCompatActivity() {
         supportActionBar?.hide()
 
         progressDialog = ProgressDialog(this)
-        progressDialog.setTitle("Logging")
+        progressDialog.setTitle("Login")
         progressDialog.setMessage("Silahkan Tunggu..")
 
         loginBinding.btnLogin.setOnClickListener{

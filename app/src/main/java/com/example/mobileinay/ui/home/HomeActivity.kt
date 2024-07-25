@@ -3,7 +3,6 @@ package com.example.mobileinay.ui.home
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.replace
 import com.example.mobileinay.HomeFragment
 import com.example.mobileinay.MapelFragment
 import com.example.mobileinay.ProfileFragment

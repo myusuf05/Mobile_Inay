@@ -6,6 +6,4 @@ data class CardMapel(
     val kitab: String?,
     val lokasi: String?
 
-) {
-
-}
+)

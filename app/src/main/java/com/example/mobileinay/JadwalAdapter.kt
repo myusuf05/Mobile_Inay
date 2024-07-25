@@ -26,12 +26,9 @@ class JadwalAdapter(private val jadwalList:ArrayList<CardMapel>)
                 holder.kegiatan.text = mapel.kegiatan
                 holder.kitab.text = mapel.kitab
                 holder.lokasi.text = mapel.lokasi
-
             }
 
             override fun getItemCount(): Int {
                 return jadwalList.size
             }
-
-
         }
