@@ -10,6 +10,7 @@ import android.widget.TextView
 import android.widget.Toast
 import android.widget.Toast.LENGTH_SHORT
 import com.example.mobileinay.DatadiriActivity
+import com.example.mobileinay.LupaSandiActivity
 import com.example.mobileinay.ui.home.HomeActivity
 import com.example.mobileinay.R
 import com.example.mobileinay.databinding.ActivityLoginBinding
@@ -20,6 +21,7 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var progressDialog: ProgressDialog
     private lateinit var loginBinding: ActivityLoginBinding
     private var firebaseAuth = FirebaseAuth.getInstance()
+    private lateinit var tvLupaSandi: TextView
 
     override fun onStart(){
         super.onStart()
@@ -33,6 +35,8 @@ class LoginActivity : AppCompatActivity() {
         setContentView(loginBinding.root)
         supportActionBar?.hide()
 
+        tvLupaSandi = findViewById(R.id.lupaSandi)
+
         progressDialog = ProgressDialog(this)
         progressDialog.setTitle("Login")
         progressDialog.setMessage("Silahkan Tunggu..")
@@ -43,6 +47,10 @@ class LoginActivity : AppCompatActivity() {
             }else{
                 Toast.makeText(this, "Silahkan Isi Email dan Password terlebih dahulu", LENGTH_SHORT).show()
             }
+        }
+
+        tvLupaSandi.setOnClickListener {
+            startActivity(Intent(this, LupaSandiActivity::class.java))
         }
         loginBinding.logReg.setOnClickListener {
             startActivity(Intent(this, RegisterActivity::class.java))

@@ -14,12 +14,12 @@
         >
         <LinearLayout
             android:id="@+id/fiqih"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_marginTop="40dp"
-            android:layout_marginStart="25dp"
-            android:layout_marginEnd="30dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -27,28 +27,35 @@
             android:background="@drawable/bg_button">
 
             <TextView
-                android:id="@+id/NamaMapel"
+                android:id="@+id/NamaMapel_tv"
                 style="@style/textNilai"
-                android:layout_width="200dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:text="Fiqh (Kitab Safinatunnajah)" />
 
             <TextView
-                android:id="@+id/Nilai"
+                android:id="@+id/Nilai_tv"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:layout_marginStart="70dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
                 android:background="@drawable/edittext_background"
                 android:gravity="center"
                 android:text="5"
                 style="@style/textNilai"
                 />
+<!--            <TextView-->
+<!--                android:id="@+id/semester_tv"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginStart="5dp"-->
+<!--                android:layout_marginEnd="2dp"-->
+<!--                android:text="Semester"-->
+<!--                android:textSize="14sp"/>-->
 
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
 
 </androidx.cardview.widget.CardView>

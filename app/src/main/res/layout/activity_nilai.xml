@@ -61,100 +61,180 @@
 
     </LinearLayout>
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="25dp"
-        android:layout_marginEnd="30dp"
-        android:orientation="vertical"
-        >
+        android:layout_height="match_parent">
         <GridLayout
-            android:layout_width="match_parent"
+            android:id="@+id/gridLayout"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:rowCount="1"
+            android:layout_margin="16dp"
             android:columnCount="2"
-            android:alignmentMode="alignMargins"
-            android:columnOrderPreserved="false">
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
 
-            <androidx.cardview.widget.CardView
+            <!-- Semester TextView -->
+            <TextView
+                android:id="@+id/tvSemester"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
+                android:text="Semester"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:gravity="center"
                 android:layout_columnWeight="1"
                 android:layout_rowWeight="1"
-                app:cardElevation="5dp"
-                app:cardCornerRadius="5dp"
-                >
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:gravity="center_horizontal"
-                    >
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:padding="16dp" />
 
-                        tools:ignore="MissingConstraints,NotSibling">
-                        <AutoCompleteTextView
-                            android:id="@+id/auto_complete"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:hint="semester"
-                            android:inputType="none"/>
-
-                    </com.google.android.material.textfield.TextInputLayout>
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
+            <!-- Dropdown for Semester -->
+            <Spinner
+                android:id="@+id/SpinnerSemester"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="1" />
+
+            <!-- Tahun Ajaran TextView -->
+            <TextView
+                android:id="@+id/tvTahunAjaran"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Tahun Ajaran"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:gravity="center"
                 android:layout_columnWeight="1"
                 android:layout_rowWeight="1"
-                app:cardElevation="5dp"
-                app:cardCornerRadius="5dp"
-                >
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:gravity="center_horizontal"
-                  >
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                        tools:ignore="MissingConstraints,NotSibling">
-                        <AutoCompleteTextView
-                            android:id="@+id/auto_complete2"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:hint="Tahun"
-                            android:inputType="none"/>
+                android:padding="16dp" />
 
-                    </com.google.android.material.textfield.TextInputLayout>
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
+            <!-- Dropdown for Tahun Ajaran -->
+            <Spinner
+                android:id="@+id/SpinnerTahun"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="1" />
 
         </GridLayout>
 
-    </LinearLayout>
+        <!-- RecyclerView for displaying the grades -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@+id/gridLayout"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/nilaiMapel"
-        android:layout_margin="30dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        app:layoutManager="LinearLayoutManager"
-        tools:listitem="@layout/card_sub_nilai"/>
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        android:layout_marginStart="25dp"-->
+<!--        android:layout_marginEnd="30dp"-->
+<!--        android:orientation="vertical"-->
+<!--        >-->
+<!--        <Spinner-->
+<!--            android:id="@+id/SpinnerSemester"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginBottom="16dp"/>-->
 
+<!--        <Spinner-->
+<!--            android:id="@+id/SpinnerTahun"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginBottom="16dp"/>-->
 
+<!--        <androidx.recyclerview.widget.RecyclerView-->
+<!--            android:id="@+id/rv_Nilai"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"/>-->
+<!--&lt;!&ndash;        <GridLayout&ndash;&gt;-->
+<!--&lt;!&ndash;            android:layout_width="match_parent"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:layout_height="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:rowCount="1"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:columnCount="2"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:alignmentMode="alignMargins"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:columnOrderPreserved="false">&ndash;&gt;-->
 
+<!--&lt;!&ndash;            <androidx.cardview.widget.CardView&ndash;&gt;-->
+<!--&lt;!&ndash;                android:layout_width="0dp"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:layout_height="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:layout_marginStart="10dp"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:layout_columnWeight="1"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:layout_rowWeight="1"&ndash;&gt;-->
+<!--&lt;!&ndash;                app:cardElevation="5dp"&ndash;&gt;-->
+<!--&lt;!&ndash;                app:cardCornerRadius="5dp"&ndash;&gt;-->
+<!--&lt;!&ndash;                >&ndash;&gt;-->
+<!--&lt;!&ndash;                <LinearLayout&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:layout_width="match_parent"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:layout_height="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:orientation="vertical"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:gravity="center_horizontal"&ndash;&gt;-->
+<!--&lt;!&ndash;                    >&ndash;&gt;-->
+<!--&lt;!&ndash;                    <com.google.android.material.textfield.TextInputLayout&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:layout_width="match_parent"&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:layout_height="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"&ndash;&gt;-->
+
+<!--&lt;!&ndash;                        tools:ignore="MissingConstraints,NotSibling">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <AutoCompleteTextView&ndash;&gt;-->
+<!--&lt;!&ndash;                            android:id="@+id/semester"&ndash;&gt;-->
+<!--&lt;!&ndash;                            android:layout_width="match_parent"&ndash;&gt;-->
+<!--&lt;!&ndash;                            android:layout_height="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;                            android:hint="semester"&ndash;&gt;-->
+<!--&lt;!&ndash;                            android:inputType="none"/>&ndash;&gt;-->
+
+<!--&lt;!&ndash;                    </com.google.android.material.textfield.TextInputLayout>&ndash;&gt;-->
+<!--&lt;!&ndash;                </LinearLayout>&ndash;&gt;-->
+<!--&lt;!&ndash;            </androidx.cardview.widget.CardView>&ndash;&gt;-->
+
+<!--&lt;!&ndash;            <androidx.cardview.widget.CardView&ndash;&gt;-->
+<!--&lt;!&ndash;                android:layout_width="0dp"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:layout_height="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:layout_marginStart="10dp"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:layout_marginEnd="10dp"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:layout_columnWeight="1"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:layout_rowWeight="1"&ndash;&gt;-->
+<!--&lt;!&ndash;                app:cardElevation="5dp"&ndash;&gt;-->
+<!--&lt;!&ndash;                app:cardCornerRadius="5dp"&ndash;&gt;-->
+<!--&lt;!&ndash;                >&ndash;&gt;-->
+<!--&lt;!&ndash;                <LinearLayout&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:layout_width="match_parent"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:layout_height="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:orientation="vertical"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:gravity="center_horizontal"&ndash;&gt;-->
+<!--&lt;!&ndash;                  >&ndash;&gt;-->
+<!--&lt;!&ndash;                    <com.google.android.material.textfield.TextInputLayout&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:layout_width="match_parent"&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:layout_height="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"&ndash;&gt;-->
+<!--&lt;!&ndash;                        tools:ignore="MissingConstraints,NotSibling">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <AutoCompleteTextView&ndash;&gt;-->
+<!--&lt;!&ndash;                            android:id="@+id/tahun"&ndash;&gt;-->
+<!--&lt;!&ndash;                            android:layout_width="match_parent"&ndash;&gt;-->
+<!--&lt;!&ndash;                            android:layout_height="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;                            android:hint="Tahun"&ndash;&gt;-->
+<!--&lt;!&ndash;                            android:inputType="none"/>&ndash;&gt;-->
+
+<!--&lt;!&ndash;                    </com.google.android.material.textfield.TextInputLayout>&ndash;&gt;-->
+<!--&lt;!&ndash;                </LinearLayout>&ndash;&gt;-->
+<!--&lt;!&ndash;            </androidx.cardview.widget.CardView>&ndash;&gt;-->
+
+<!--&lt;!&ndash;        </GridLayout>&ndash;&gt;-->
+
+<!--    </LinearLayout>-->
+
+<!--    <ListView-->
+<!--        android:id="@+id/listNilai"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_margin="25dp"-->
+<!--        />-->
 
 </LinearLayout>

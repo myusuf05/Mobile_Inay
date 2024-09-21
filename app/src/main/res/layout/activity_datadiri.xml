@@ -31,19 +31,33 @@
         app:layout_constraintEnd_toEndOf="parent"
         />
 
-    <EditText
+
+<!--    <EditText-->
+<!--        android:id="@+id/etKelas"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:hint="Nama kelas"-->
+<!--        android:layout_margin="30dp"-->
+<!--        style="@style/TextInputLayout"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/etName"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+
+<!--        />-->
+
+    <Spinner
         android:id="@+id/etKelas"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Nama kelas"
-        android:layout_margin="30dp"
-        style="@style/TextInputLayout"
-        app:layout_constraintTop_toBottomOf="@+id/etName"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginStart="30dp"
+        android:outlineProvider="background"
+        app:layout_constraintTop_toTopOf="@+id/etName"
         app:layout_constraintEnd_toEndOf="parent"
-
+        app:layout_constraintStart_toStartOf="parent"
         />
-
     <EditText
         android:id="@+id/etAlamat"
         android:layout_width="match_parent"

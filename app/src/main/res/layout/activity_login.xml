@@ -72,17 +72,30 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
+    <TextView
+        android:id="@+id/lupaSandi"
+        style="@style/ForgotPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Lupa Sandi ..?"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Tit_pass"
+        android:layout_marginLeft="210dp"
+        />
+
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_login"
         style="@style/btn_klik"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:text="@string/btn_login"
         android:layout_marginHorizontal="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Tit_pass"
+        app:layout_constraintTop_toBottomOf="@+id/lupaSandi"
         tools:ignore="TextSizeCheck" />
     <TextView
         android:id="@+id/log_reg"

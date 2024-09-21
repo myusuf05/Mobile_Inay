@@ -2,6 +2,7 @@ package com.example.mobileinay
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mobileinay.databinding.ActivityJadwalNgajiBinding
@@ -19,11 +20,8 @@ class JadwalNgajiActivity : AppCompatActivity() {
 
     private lateinit var db:FirebaseFirestore
     private var firebaseAuth = FirebaseAuth.getInstance()
-
     private lateinit var binding: ActivityJadwalNgajiBinding
-
     private lateinit var jadwalAdapter: JadwalAdapter
-
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,6 +41,7 @@ class JadwalNgajiActivity : AppCompatActivity() {
         binding.rvCard.layoutManager = LinearLayoutManager(this)
         fetchData("senin")
     }
+
     private fun prepareView() {
         binding.imgBack.setOnClickListener{
 //             Replace the current fragment with a new fragment

@@ -31,4 +31,4 @@ class JadwalAdapter(private val jadwalList:ArrayList<CardMapel>)
             override fun getItemCount(): Int {
                 return jadwalList.size
             }
-        }
+    }
