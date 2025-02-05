@@ -2,8 +2,8 @@
     <string name="app_name">MobileInay</string>
     <string name="login">Login</string>
     <string name="btn_login">Login</string>
-    <string name="login_email">Your Email</string>
-    <string name="login_password">Your password</string>
+    <string name="login_email">Masukkan NIS</string>
+    <string name="login_password">Masukkan Password</string>
     <string name="tidak_ada_akun">
         <font color="ffffff">jika tidak memiliki akun, klik di</font>
         <font>

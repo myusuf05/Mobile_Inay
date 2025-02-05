@@ -8,8 +8,8 @@ data class penilaian(
     val studentEmail: String,
 )
 
-data class User(
-    val alamat: String = "",
-    val name: String = "",
-    val kelas: String = ""
-)
+//data class User(
+//    val alamat: String = "",
+//    val name: String = "",
+//    val kelas: String = ""
+//)

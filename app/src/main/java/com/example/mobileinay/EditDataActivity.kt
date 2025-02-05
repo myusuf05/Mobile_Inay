@@ -1,21 +1,18 @@
 package com.example.mobileinay
 
 import android.os.Bundle
-import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.FirebaseFirestore
 
 class EditDataActivity : AppCompatActivity() {
     private lateinit var listkelas2: Spinner
     private lateinit var textKelas: TextView
-    private lateinit var auth:FirebaseAuth
-    private lateinit var db:FirebaseFirestore
+//    private lateinit var auth:FirebaseAuth
+//    private lateinit var db:FirebaseFirestore
 
         override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,8 +21,8 @@ class EditDataActivity : AppCompatActivity() {
 
             listkelas2 = findViewById(R.id.listKelas)
             textKelas = findViewById(R.id.textViewGrades)
-            auth = FirebaseAuth.getInstance()
-            db = FirebaseFirestore.getInstance()
+//            auth = FirebaseAuth.getInstance()
+//            db = FirebaseFirestore.getInstance()
 
             getDataKelas()
 
@@ -37,21 +34,21 @@ class EditDataActivity : AppCompatActivity() {
     }
 
     private fun getDataKelas() {
-        val kelasData = db.collection("kelas")
-
-        kelasData.get()
-            .addOnSuccessListener { documents ->
-                val kelasList = mutableListOf<String>()
-                for (document in documents){
-                    val kelasName = document.getString("name")
-                    kelasName?.let { kelasList.add(it) }
-                }
-                val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, kelasList)
-                adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line)
-                listkelas2.adapter = adapter
-            }
-            .addOnFailureListener { exception ->
-                exception.printStackTrace()
-            }
+//        val kelasData = db.collection("kelas")
+//
+//        kelasData.get()
+//            .addOnSuccessListener { documents ->
+//                val kelasList = mutableListOf<String>()
+//                for (document in documents){
+//                    val kelasName = document.getString("name")
+//                    kelasName?.let { kelasList.add(it) }
+//                }
+//                val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, kelasList)
+//                adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line)
+//                listkelas2.adapter = adapter
+//            }
+//            .addOnFailureListener { exception ->
+//                exception.printStackTrace()
+//            }
     }
 }

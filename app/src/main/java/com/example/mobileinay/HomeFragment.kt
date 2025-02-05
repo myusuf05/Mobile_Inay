@@ -1,24 +1,19 @@
 package com.example.mobileinay
 
+//import com.google.firebase.auth.FirebaseAuth
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
-import android.widget.TextView
-import android.widget.Toast
-import androidx.navigation.fragment.findNavController
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.FirebaseFirestore
+import androidx.fragment.app.Fragment
 
 
 class HomeFragment : Fragment() {
 
-    val Auth = FirebaseAuth.getInstance()
-    val db = FirebaseFirestore.getInstance()
+//    val Auth = FirebaseAuth.getInstance()
+//    val db = FirebaseFirestore.getInstance()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -61,28 +56,28 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val Auth = FirebaseAuth.getInstance()
+//        val Auth = FirebaseAuth.getInstance()
 
-        val user = Auth.currentUser
-        if (user != null){
-            UserData (view)
-        }
+//        val user = Auth.currentUser
+//        if (user != null){
+//            UserData (view)
+//        }
     }
 
     private fun UserData(view: View) {
-        val userId = Auth.currentUser?.email
-        if (userId !=null){
-            db.collection("user").document(userId!!).get()
-                .addOnSuccessListener { document ->
-                    if (document != null){
-                        val name = document.data?.get("nama")
-                        if (name != null){
-                            view?.findViewById<TextView>(R.id.NamaUser)?.text = "Halo, $name"
-                        }
-                    }
-                }
+//        val userId = Auth.currentUser?.email
+//        if (userId !=null){
+//            db.collection("user").document(userId!!).get()
+//                .addOnSuccessListener { document ->
+//                    if (document != null){
+//                        val name = document.data?.get("nama")
+//                        if (name != null){
+//                            view?.findViewById<TextView>(R.id.NamaUser)?.text = "Halo, $name"
+//                        }
+//                    }
+//                }
 
-        }
+//        }
     }
 
 }

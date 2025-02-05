@@ -32,7 +32,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="30dp"
-                android:text="Musyawaroh"
+                android:text="Musy  awaroh"
                 android:textColor="@color/black"
                 android:textStyle="bold"
                 android:textSize="16sp"
@@ -52,18 +52,18 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/JdlKegiatan" />
 
-            <TextView
-                android:id="@+id/lokasi"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="40dp"
-                android:layout_marginTop="10dp"
-                android:text="Lokasi : Masjid"
-                android:textSize="12sp"
-                android:textStyle="normal"
-                android:textColor="@color/black"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/Kitab" />
+<!--            <TextView-->
+<!--                android:id="@+id/lokasi"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginStart="40dp"-->
+<!--                android:layout_marginTop="10dp"-->
+<!--                android:text="Lokasi : Masjid"-->
+<!--                android:textSize="12sp"-->
+<!--                android:textStyle="normal"-->
+<!--                android:textColor="@color/black"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@id/Kitab" />-->
 
             <TextView
                 android:id="@+id/jam"
@@ -71,12 +71,24 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="40dp"
                 android:layout_marginTop="10dp"
-                android:text="Jam : 05.30 Wib"
+                android:text="Mulai: 05.30 Wib"
                 android:textSize="12sp"
                 android:textColor="@color/black"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/lokasi" />
+                app:layout_constraintTop_toBottomOf="@+id/Kitab" />
+            <TextView
+                android:id="@+id/jam_Selesai"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="10dp"
+                android:text="Selesai : 05.30 Wib"
+                android:textSize="12sp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/jam" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 

@@ -1,25 +1,20 @@
 package com.example.mobileinay.ui.register
 
 import android.app.ProgressDialog
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
 import android.widget.Toast
 import android.widget.Toast.LENGTH_SHORT
-import com.example.mobileinay.DatadiriActivity
-import com.example.mobileinay.R
+import androidx.appcompat.app.AppCompatActivity
 import com.example.mobileinay.databinding.ActivityRegisterBinding
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.userProfileChangeRequest
-import com.google.firebase.firestore.FirebaseFirestore
+
+//import com.google.firebase.auth.FirebaseAuth
+//import com.google.firebase.auth.userProfileChangeRequest
+//import com.google.firebase.firestore.FirebaseFirestore
 
 class RegisterActivity : AppCompatActivity() {
     private lateinit var progressDialog: ProgressDialog
-    private var firebaseAuth = FirebaseAuth.getInstance()
-    private lateinit var db: FirebaseFirestore
+//    private var firebaseAuth = FirebaseAuth.getInstance()
+//    private lateinit var db: FirebaseFirestore
     private lateinit var registerBinding: ActivityRegisterBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,20 +41,20 @@ class RegisterActivity : AppCompatActivity() {
         }
     }
     private fun processRegister(){
-        val email = registerBinding.TeiEmail.text.toString()
-        val pass = registerBinding.TeiPass.text.toString()
-
-        progressDialog.show()
-        firebaseAuth.createUserWithEmailAndPassword(email, pass)
-            .addOnCompleteListener { task ->
-                if (task.isSuccessful){
-                    this.finish()
-                }else{
-                    progressDialog.dismiss()
-                }
-            }
-            .addOnFailureListener { error ->
-                Toast.makeText(this, error.localizedMessage, LENGTH_SHORT).show()
-            }
+//        val email = registerBinding.TeiEmail.text.toString()
+//        val pass = registerBinding.TeiPass.text.toString()
+//
+//        progressDialog.show()
+//        firebaseAuth.createUserWithEmailAndPassword(email, pass)
+//            .addOnCompleteListener { task ->
+//                if (task.isSuccessful){
+//                    this.finish()
+//                }else{
+//                    progressDialog.dismiss()
+//                }
+//            }
+//            .addOnFailureListener { error ->
+//                Toast.makeText(this, error.localizedMessage, LENGTH_SHORT).show()
+//            }
     }
 }

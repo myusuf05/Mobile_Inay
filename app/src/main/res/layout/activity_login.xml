@@ -47,7 +47,7 @@
             android:id="@+id/Tei_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textEmailAddress"
+            android:inputType="number"
             android:background="@drawable/border_layout_login"/>
 
     </com.google.android.material.textfield.TextInputLayout>

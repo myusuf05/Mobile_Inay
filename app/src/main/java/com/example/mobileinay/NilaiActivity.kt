@@ -1,28 +1,23 @@
 package com.example.mobileinay
 
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.ArrayAdapter
 import android.widget.Spinner
-import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.FirebaseFirestore
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.tasks.await
-import kotlinx.coroutines.withContext
+import com.example.mobileinay.retrofit.ApiClient
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+
 
 class NilaiActivity : AppCompatActivity() {
 
     private var dbName = "kelas"
-
-    private lateinit var db:FirebaseFirestore
-    private lateinit var auth: FirebaseAuth
+//    private lateinit var db:FirebaseFirestore
+//    private var auth = FirebaseAuth.getInstance()
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: UserNilai
     private lateinit var spinnerSemester: Spinner
@@ -32,14 +27,28 @@ class NilaiActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_nilai)
 
-        db = FirebaseFirestore.getInstance()
-        auth = FirebaseAuth.getInstance()
+//        db = FirebaseFirestore.getInstance()
 
         recyclerView = findViewById(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this)
 
         spinnerSemester = findViewById(R.id.SpinnerSemester)
         spinnerTahun = findViewById(R.id.SpinnerTahun)
+
+        ApiClient.instance.get_nilai().enqueue(object : Callback<List<nilai_santri>> {
+            override fun onResponse(
+                call: Call<List<nilai_santri>>,
+                response: Response<List<nilai_santri>>
+            ) {
+                if (response.isSuccessful){
+                    val nilaiList = response.body()
+                }
+            }
+
+            override fun onFailure(call: Call<List<nilai_santri>>, t: Throwable) {
+                TODO("Not yet implemented")
+            }
+        })
 
 //        SetUp pilihan semester
         val semesterList = listOf("Semester 1", "Semester 2")
@@ -62,85 +71,55 @@ class NilaiActivity : AppCompatActivity() {
         spinnerTahun.adapter = tahuns
 
 //      ambil email pengguna yang sedang login
-        val userEmail = auth.currentUser?.email
-
-//        Jika pengguna ada, amnil data dari firestore
-        if (userEmail !=null){
-            getUserData(userEmail)
-        }
-    }
-
-//    private fun fetchData( hari: String) {
-//        CoroutineScope(Dispatchers.IO).launch {
-//            try {
-//                val kelascolletion = db.collection("user").document(auth.currentUser?.email.toString())
-//                    .get().await()
-//                val jadwal = db.collection(dbName).document(kelascolletion.getString("kelas").toString())
-//                    .collection(hari)
-//                    .get().await()
-//                val listKegiatan = ArrayList<CardMapel>()
-//                for (documentjadwal in jadwal.documents) {
-//                    listKegiatan.add(
-//                        CardMapel(
-//                            documentjadwal.id,
-//                            documentjadwal.getString("kegiatan"),
-//                            documentjadwal.getString("kitab"),
-//                            documentjadwal.getString("lokasi")
-//                        )
-//                    )
+//        val userEmail = auth.currentUser
+//
+//        if (userEmail != null){
+//            val emailUser = userEmail.email
+//
+////            mengambil kelas pengguna berdasarkan email
+//            db.collection("user").document(auth.currentUser?.email.toString())
+//                .get()
+//                .addOnSuccessListener { documents ->
+//                    if (documents.exists()){
+//                        val kelas = documents.getString("kelas") ?: ""
+//
+////                        list untuk menyimpan data nilai
+//                        val nilaiList = mutableListOf<NilaiItem>()
+//
+////                        Setelah mendapatkan kelas pengguna, ambil nilai dari sub nilai
+//                        db.collection("kelas").document(kelas)
+//                            .collection("nilai")
+//                            .get()
+//                            .addOnSuccessListener { querySnapshot ->
+//                                for (document in querySnapshot){
+//                                    val mapel = document.getString("mapel") ?: ""
+//                                    val nilai = document.getLong("nilai") ?.toInt() ?:0
+//                                    val semester = document.getString("semester") ?:""
+//                                    val tahunAjaran = document.getString("tahunAjaran") ?: ""
+//
+////                                    menambahkan data ke list
+//                                    nilaiList.add(NilaiItem(mapel, nilai, semester, tahunAjaran))
+//
+////                                    menampilkan nilai ini ke recyclerView atau logcat
+//                                    Log.d("Firestore", "Mata pelajaran: $mapel, Nilai: $nilai")
+//                                }
+////                                Setelah data lengkap, set adapter ke recyclerView
+//                                val adapter = UserNilai(nilaiList)
+//                                recyclerView.adapter = adapter
+//                            }
+//                            .addOnFailureListener { e ->
+//                                Log.w("Firebase", "Error mengambil data nilai", e)
+//                            }
+//                    }
 //                }
-//                withContext(Dispatchers.Main) {
-//                    UserNilai = JadwalAdapter(listKegiatan)
-//                    binding.rvCard.adapter = UserNilai
+//                .addOnFailureListener { e ->
+//                    Log.w("Firebase", "Eror mengambil data kelas User", e)
 //                }
-//            } catch (e: Exception) {
-//                Toast.makeText(this@NilaiActivity, "Error saat mengambil data", Toast.LENGTH_SHORT).show()
-//            }
+//        }else{
+////            jika user belum Login
+//            Log.w("Auth", "User Belum Login")
 //        }
-//    }
-    private fun getUserData(){
-//        Referensi ke dokumen user di koleksi firestore berdasarkan email
-        db.collection("user").document(auth.currentUser?.email.toString())
-            .get()
-            .addOnSuccessListener { documents->
-                if (documents !=null) {
-//                    Ambil kelas pengguna
-                    val kelas = documents.getString("kelas")
-                    if (kelas != null){
-                        fetchNilaiFromFirestore(kelas)
-                    }
-                }else{
-                    Log.d("Firestore", "No such Dosucment")
-                }
-            }
-            .addOnFailureListener { exception ->
-                Log.d("Firestore", "Get Failed with ", exception)
-            }
+
     }
 
-    private fun fetchNilaiFromFirestore(kelas: String) {
-//        Ambil nilai dari sub  koleksi "nilai" di dalam dokumen kelas
-        db.collection("kelas").document(kelas)
-            .collection("nilai")
-            .get()
-            .addOnSuccessListener { result ->
-                val nilaiList = ArrayList<NilaiItem>()
-
-//                loop melalui dokumen di sub koleksi "nilai"
-                for (document in result){
-                    val mapel = document.getString("nama")?:""
-                    val nilai = document.getLong("nilai")?.toInt()?: 0
-
-//                    Tambahkan ke dalam list
-                    nilaiList.add(NilaiItem(mapel, nilai))
-                }
-
-//                Atur adapter untuk recyclerView
-                adapter = UserNilai(nilaiList)
-                recyclerView.adapter = adapter
-            }
-            .addOnFailureListener { exception ->
-                Log.d("Firestore", "Error getting documents: ", exception)
-            }
-    }
 }

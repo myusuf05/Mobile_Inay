@@ -6,10 +6,6 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-data class NilaiItem(
-    val mapel: String = "",
-    val nilai: Int = 0
-)
 
 class UserNilai(private val nilaiList: List<NilaiItem>) :
     RecyclerView.Adapter<UserNilai.UserViewHolder>() {
@@ -17,6 +13,8 @@ class UserNilai(private val nilaiList: List<NilaiItem>) :
     class UserViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         val namaMapel: TextView = itemView.findViewById(R.id.NamaMapel_tv)
         val nilaiMapel: TextView = itemView.findViewById(R.id.Nilai_tv)
+        val semesterMapel: TextView = itemView.findViewById(R.id.SpinnerSemester)
+        val tahunAjaranMapel: TextView = itemView.findViewById(R.id.SpinnerTahun)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {
@@ -28,11 +26,18 @@ class UserNilai(private val nilaiList: List<NilaiItem>) :
 
     override fun onBindViewHolder(holder: UserViewHolder, position: Int) {
         val nilai = nilaiList[position]
-        holder.namaMapel.text = nilai.mapel
+        holder.namaMapel.text = nilai.nama.toString()
         holder.nilaiMapel.text = nilai.nilai.toString()
+        holder.semesterMapel.text = nilai.semester.toString()
+        holder.tahunAjaranMapel.text = nilai.tahunAjaran.toString()
     }
 
-    override fun getItemCount(): Int {
+    override fun getItemCount(): Int{
         return nilaiList.size
     }
+//    fun updateData(newList: List<NilaiItem>){
+//        nilaiList = newList
+//        notifyDataSetChanged()
+//    }
+
 }

@@ -1,25 +1,21 @@
 package com.example.mobileinay
 
-import android.content.Intent
 import android.os.Bundle
 import android.util.Patterns
 import android.widget.Button
 import android.widget.EditText
-import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.mobileinay.databinding.ActivityLupaSandiBinding
-import com.example.mobileinay.ui.login.LoginActivity
-import com.google.firebase.auth.FirebaseAuth
 
 class LupaSandiActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityLupaSandiBinding
     private lateinit var etEmail: EditText
     private lateinit var btnResetPass: Button
-    private lateinit var auth:FirebaseAuth
+//    private lateinit var auth:FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,17 +38,17 @@ class LupaSandiActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            FirebaseAuth.getInstance().sendPasswordResetEmail(email).addOnCompleteListener {
-                if (it.isSuccessful){
-                    Toast.makeText(this, "Reset password url berhasil di kirim", Toast.LENGTH_SHORT).show()
-                    startActivity(Intent(this, LoginActivity::class.java))
-                    finish()
-                }else{
-                    edtEmail.error = "${it.exception?.message}"
-                    edtEmail.requestFocus()
-                    return@addOnCompleteListener
-                }
-            }
+//            FirebaseAuth.getInstance().sendPasswordResetEmail(email).addOnCompleteListener {
+//                if (it.isSuccessful){
+//                    Toast.makeText(this, "Reset password url berhasil di kirim", Toast.LENGTH_SHORT).show()
+//                    startActivity(Intent(this, LoginActivity::class.java))
+//                    finish()
+//                }else{
+//                    edtEmail.error = "${it.exception?.message}"
+//                    edtEmail.requestFocus()
+//                    return@addOnCompleteListener
+//                }
+//            }
         }
 
 //        etEmail = findViewById(R.id.etEmail)
