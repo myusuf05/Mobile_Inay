@@ -1,24 +1,26 @@
 package com.example.mobileinay.ui.home
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.mobileinay.HomeFragment
 import com.example.mobileinay.MapelFragment
 import com.example.mobileinay.ProfileFragment
 import com.example.mobileinay.R
 import com.example.mobileinay.TagihanFragment
-import com.example.mobileinay.databinding.ActivityHomeBinding
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
 class HomeActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityHomeBinding
+//    private lateinit var binding: ActivityHomeBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityHomeBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        setContentView(R.layout.activity_home)
+
+        val bottomNav = findViewById<BottomNavigationView>(R.id.btn_nv)
+
         replaceFragment(HomeFragment())
         supportActionBar?.hide()
 
@@ -28,7 +30,7 @@ class HomeActivity : AppCompatActivity() {
                 .replace(R.id.Fragment_home, HomeFragment())
         }
 
-        binding.btnNv.setOnItemSelectedListener {
+        bottomNav.setOnItemSelectedListener {
             when(it.itemId){
                 R.id.btn_home -> replaceFragment(HomeFragment())
                 R.id.btn_mapel -> replaceFragment(MapelFragment())
@@ -45,9 +47,12 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun replaceFragment(fragment: Fragment){
-        val fragmentManager = supportFragmentManager
-        val fragmentTransaction = fragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.Fragment_home,fragment)
-        fragmentTransaction.commit()
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.Fragment_home, fragment)
+            .commit()
+//        val fragmentManager = supportFragmentManager
+//        val fragmentTransaction = fragmentManager.beginTransaction()
+//        fragmentTransaction.replace(R.id.Fragment_home,fragment)
+//        fragmentTransaction.commit()
     }
 }

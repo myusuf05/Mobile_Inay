@@ -1,16 +1,13 @@
 package com.example.mobileinay
 
 
+//import com.example.mobileinay.retrofit.ApiClient
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.mobileinay.retrofit.ApiClient
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 
 class NilaiActivity : AppCompatActivity() {
@@ -35,20 +32,20 @@ class NilaiActivity : AppCompatActivity() {
         spinnerSemester = findViewById(R.id.SpinnerSemester)
         spinnerTahun = findViewById(R.id.SpinnerTahun)
 
-        ApiClient.instance.get_nilai().enqueue(object : Callback<List<nilai_santri>> {
-            override fun onResponse(
-                call: Call<List<nilai_santri>>,
-                response: Response<List<nilai_santri>>
-            ) {
-                if (response.isSuccessful){
-                    val nilaiList = response.body()
-                }
-            }
-
-            override fun onFailure(call: Call<List<nilai_santri>>, t: Throwable) {
-                TODO("Not yet implemented")
-            }
-        })
+//        ApiClient.instance.get_nilai().enqueue(object : Callback<List<nilai_santri>> {
+//            override fun onResponse(
+//                call: Call<List<nilai_santri>>,
+//                response: Response<List<nilai_santri>>
+//            ) {
+//                if (response.isSuccessful){
+//                    val nilaiList = response.body()
+//                }
+//            }
+//
+//            override fun onFailure(call: Call<List<nilai_santri>>, t: Throwable) {
+//                TODO("Not yet implemented")
+//            }
+//        })
 
 //        SetUp pilihan semester
         val semesterList = listOf("Semester 1", "Semester 2")

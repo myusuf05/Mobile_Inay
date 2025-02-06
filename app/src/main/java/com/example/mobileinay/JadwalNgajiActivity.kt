@@ -4,10 +4,6 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mobileinay.databinding.ActivityJadwalNgajiBinding
-import com.example.mobileinay.retrofit.ApiClient
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 class JadwalNgajiActivity : AppCompatActivity() {
 
@@ -35,34 +31,34 @@ class JadwalNgajiActivity : AppCompatActivity() {
         binding.rvCard.setHasFixedSize(true)
         binding.rvCard.layoutManager = LinearLayoutManager(this)
 
-        ApiClient.instance.get_jadwal().enqueue(object : Callback<List<jadwal_santri>> {
-            override fun onResponse(
-                call: Call<List<jadwal_santri>>,
-                response: Response<List<jadwal_santri>>
-            ) {
-                if (response.isSuccessful){
-                    val jadwalList = response.body()
-                }
-            }
-
-            override fun onFailure(call: Call<List<jadwal_santri>>, t: Throwable) {
-                TODO("Not yet implemented")
-            }
-        })
-        ApiClient.instance.get_pengajar().enqueue(object :Callback<List<pengajar>>{
-            override fun onResponse(
-                call: Call<List<pengajar>>,
-                response: Response<List<pengajar>>
-            ) {
-                if (response.isSuccessful){
-                    val pengajarList = response.body()
-                }
-            }
-
-            override fun onFailure(call: Call<List<pengajar>>, t: Throwable) {
-                TODO("Not yet implemented")
-            }
-        })
+//        ApiClient.instance.get_jadwal().enqueue(object : Callback<List<jadwal_santri>> {
+//            override fun onResponse(
+//                call: Call<List<jadwal_santri>>,
+//                response: Response<List<jadwal_santri>>
+//            ) {
+//                if (response.isSuccessful){
+//                    val jadwalList = response.body()
+//                }
+//            }
+//
+//            override fun onFailure(call: Call<List<jadwal_santri>>, t: Throwable) {
+//                TODO("Not yet implemented")
+//            }
+//        })
+//        ApiClient.instance.get_pengajar().enqueue(object :Callback<List<pengajar>>{
+//            override fun onResponse(
+//                call: Call<List<pengajar>>,
+//                response: Response<List<pengajar>>
+//            ) {
+//                if (response.isSuccessful){
+//                    val pengajarList = response.body()
+//                }
+//            }
+//
+//            override fun onFailure(call: Call<List<pengajar>>, t: Throwable) {
+//                TODO("Not yet implemented")
+//            }
+//        })
         fetchData("senin")
     }
 
