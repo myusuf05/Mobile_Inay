@@ -1,6 +1,6 @@
 package com.example.mobileinay
 
-//import com.google.firebase.auth.FirebaseAuth
+
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -38,6 +38,7 @@ class HomeFragment : Fragment() {
         if (!accssToken.isNullOrEmpty() ){
             getUserProfil(accssToken)
         }else{
+            Log.d("HomeFragment", "Token yang dikirim: Bearer $accssToken")
             Toast.makeText(requireContext(), "Token tidak ditemukan", Toast.LENGTH_SHORT).show()
         }
 
@@ -74,23 +75,33 @@ class HomeFragment : Fragment() {
 
     private fun getUserProfil(accssToken: String) {
         val authHeader = "Bearer $accssToken"
-        ApiClient.loginServices.getProtected(authHeader)
-            .enqueue(object : Callback<ProtectedResponse> {
+        val idUser = "25021000"
+//        Log.d("HomeFragment", "Menggunakan Token: $authHeader")
+
+        ApiClient.loginServices.getProfile(authHeader, idUser)
+            .enqueue(object : Callback<Profile> {
                 override fun onResponse(
-                    call: Call<ProtectedResponse>,
-                    response: Response<ProtectedResponse>
+                    call: Call<Profile>,
+                    response: Response<Profile>
                 ) {
+                    Log.d("HomeFragment", "Response Code: ${response.code()}") // Log response code
+                    Log.d("HomeFragment", "Response Body: ${response.body()}") // Log response body
                     if (response.isSuccessful){
                         val UserProtected = response.body()
-                        UserProtected?.data?.let {
-                            namaUser.text = ", ${it.nama}"
+                        if (UserProtected?.data != null) {
+                            namaUser.text = "${UserProtected.data.nama}"
+                        } else {
+                            namaUser.text = "Data user tidak ditemukan"
+                            Log.e("HomeFragment", "Data user kosong: ${response.body()}")
                         }
                     }else{
                         namaUser.text = "Gagal memuat nama user"
+                        Log.e("HomeFragment", "Error Response: ${response.errorBody()?.string()}")
                     }
                 }
 
-                override fun onFailure(call: Call<ProtectedResponse>, t: Throwable) {
+                override fun onFailure(call: Call<Profile>, t: Throwable) {
+                    Log.e("HomeFragment", "Request gagal: ${t.message}", t)
                     namaUser.text = "Hubungan bermasalah"
                 }
 

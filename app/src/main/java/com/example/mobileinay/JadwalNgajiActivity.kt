@@ -3,33 +3,32 @@ package com.example.mobileinay
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.mobileinay.api.adapter.SessionManager
 import com.example.mobileinay.databinding.ActivityJadwalNgajiBinding
 
 class JadwalNgajiActivity : AppCompatActivity() {
 
-    private val dbName = "jadwal"
-//
-//    private lateinit var db:FirebaseFirestore
-//    private var firebaseAuth = FirebaseAuth.getInstance()
     private lateinit var binding: ActivityJadwalNgajiBinding
-//    private lateinit var jadwalAdapter: JadwalAdapter
+    private lateinit var sessionManager: SessionManager
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
-        binding = ActivityJadwalNgajiBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        setContentView(R.layout.activity_jadwal_ngaji)
         supportActionBar?.hide()
 
-        // Inisialisasi Firestore
-//        db = FirebaseFirestore.getInstance()
+        sessionManager = SessionManager(this)
+//        val sharesPrefs = SessionManager(requireContext(""))
+//        val accssToken = sharesPrefs.getTokenAcces()
 
         // Menyiapkan view selain recycler view
         prepareView()
         // Menyiapkan recycler view
         binding.rvCard.setHasFixedSize(true)
         binding.rvCard.layoutManager = LinearLayoutManager(this)
+
+//        ApiClient.loginServices.getJadwal()
 
 //        ApiClient.instance.get_jadwal().enqueue(object : Callback<List<jadwal_santri>> {
 //            override fun onResponse(
@@ -91,32 +90,7 @@ class JadwalNgajiActivity : AppCompatActivity() {
     }
 
     private fun fetchData( hari: String) {
-//        CoroutineScope(Dispatchers.IO).launch {
-//            try {
-//                val kelascolletion = db.collection("user").document(firebaseAuth.currentUser?.email.toString())
-//                    .get().await()
-//                val jadwal = db.collection(dbName).document(kelascolletion.getString("kelas").toString())
-//                    .collection(hari)
-//                    .get().await()
-//                val listKegiatan = ArrayList<CardMapel>()
-//                for (documentjadwal in jadwal.documents) {
-//                    listKegiatan.add(
-//                        CardMapel(
-//                            documentjadwal.id,
-//                            documentjadwal.getString("kegiatan"),
-//                            documentjadwal.getString("kitab"),
-//                            documentjadwal.getString("lokasi")
-//                        )
-//                    )
-//                }
-//                withContext(Dispatchers.Main) {
-////                    jadwalAdapter = JadwalAdapter(listKegiatan)
-////                    binding.rvCard.adapter = jadwalAdapter
-//                }
-//            } catch (e: Exception) {
-//                Toast.makeText(this@JadwalNgajiActivity, "Error saat mengambil data", Toast.LENGTH_SHORT).show()
-//            }
-//        }
+
     }
 
 }

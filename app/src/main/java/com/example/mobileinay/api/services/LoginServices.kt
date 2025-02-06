@@ -1,9 +1,9 @@
 package com.example.mobileinay.api.services
 
+import com.example.mobileinay.DataJadwal
 import com.example.mobileinay.LoginRequest
 import com.example.mobileinay.LoginResponse
 import com.example.mobileinay.Profile
-import com.example.mobileinay.ProtectedResponse
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -17,15 +17,21 @@ interface LoginServices {
        @Body request: LoginRequest
     ):Call<LoginResponse>
 
-    @GET("user/info")
-    fun getProtected(
-        @Header("Authorization") authHeader: String
-    ):Call<ProtectedResponse>
+//    @GET("user/info")
+//    fun getProtected(
+//        @Header("Authorization") authHeader: String
+//    ):Call<ProtectedResponse>
 
     @GET ("profiles")
     fun getProfile(
         @Header("Authorization") token: String,
         @Query("id_user") id_user:String
     ):Call<Profile>
+
+    @GET ("jadwals")
+    fun getJadwal(
+        @Header("Authorization") token: String,
+//        @Query("id_user") id_user:String
+    ):Call<JadwalResponse>
 
 }

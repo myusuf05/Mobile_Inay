@@ -1,19 +1,40 @@
 package com.example.mobileinay
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.example.mobileinay.api.adapter.SessionManager
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class ProfileFragment : Fragment() {
-
+    private lateinit var namaUser: TextView
+    private lateinit var kelasUser: TextView
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_profile, container, false)
+
+        namaUser = view.findViewById(R.id.Tv_NameUser)
+        kelasUser = view.findViewById(R.id.Tv_kelas)
+
+        val sharesPrefs = SessionManager(requireContext())
+        val accssToken = sharesPrefs.getTokenAcces()
+
+        if (!accssToken.isNullOrEmpty() ){
+            getUserProfil(accssToken)
+        }else{
+            Log.d("HomeFragment", "Token yang dikirim: Bearer $accssToken")
+            Toast.makeText(requireContext(), "Token tidak ditemukan", Toast.LENGTH_SHORT).show()
+        }
 
         // Logout Button
         val btnLogout = view.findViewById<Button>(R.id.btn_logOut)
@@ -23,6 +44,43 @@ class ProfileFragment : Fragment() {
         }
 
         return view
+    }
+
+    private fun getUserProfil(accssToken: String) {
+        val authHeader = "Bearer $accssToken"
+        val idUser = "25021000"
+
+        ApiClient.loginServices.getProfile(authHeader, idUser)
+            .enqueue(object : Callback<Profile> {
+                override fun onResponse(
+                    call: Call<Profile>,
+                    response: Response<Profile>
+                ) {
+                    Log.d("HomeFragment", "Response Code: ${response.code()}") // Log response code
+                    Log.d("HomeFragment", "Response Body: ${response.body()}") // Log response body
+                    if (response.isSuccessful){
+                        val userProtected = response.body()
+                        if (userProtected?.data != null) {
+                            namaUser.text = "${userProtected.data.nama}"
+                            kelasUser.text = "${userProtected.data.kelas?.kelas}"
+                        } else {
+                            namaUser.text = "Data user tidak ditemukan"
+                            kelasUser.text= "DATA kelas tidak ditemukan"
+                            Log.e("HomeFragment", "Data user kosong: ${response.body()}")
+                        }
+                    }else{
+                        namaUser.text = "Gagal memuat nama user"
+                        Log.e("HomeFragment", "Error Response: ${response.errorBody()?.string()}")
+                    }
+                }
+
+                override fun onFailure(call: Call<Profile>, t: Throwable) {
+                    Log.e("HomeFragment", "Request gagal: ${t.message}", t)
+                    namaUser.text = "Hubungan bermasalah"
+                }
+
+            })
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
