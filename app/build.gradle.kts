@@ -38,6 +38,9 @@ android {
     buildFeatures {
         viewBinding = true
     }
+//    dataBinding {
+//        enabled = true
+//    }
     buildToolsVersion = "34.0.0"
     ndkVersion = "26.1.10909125"
 }

@@ -7,11 +7,6 @@ data class LoginResponse(
     val expires_in: Int
 )
 
-data class JadwalResponse(
-    val message: String,
-    val data: DataKelas?
-)
-
 data class LoginRequest(
     val id_santri: String,
     val password: String
@@ -20,6 +15,10 @@ data class LoginRequest(
 data class Profile(
     val message: String,
     val data: UserData?
+)
+data class JadwalNew(
+    val message: String,
+    val data: DataKelas?
 )
 data class UserData(
     val id_santri: String,
@@ -40,14 +39,25 @@ data class Kelas(
     val created_at: String,
     val updated_at: String
 )
+
+data class Jadwal(
+    val hari: String,
+    val pelajaran: List<DataJadwal>
+)
 data class DataJadwal(
-    val id_jadwal: Int,
-    val id_kelas: Int,
-    val id_mapel: Int,
-    val id_pengajar: Int,
-    val hari: Int,
-    val mulai: String,
-    val selesai: String
+//    Statis
+    val kegiatan: String,
+    val kitab: String,
+    val jamMulai: String,
+    val jamSelesai: String,
+
+//    val id_jadwal: Int,
+//    val id_kelas: Int,
+//    val id_mapel: Int,
+//    val id_pengajar: Int,
+//    val hari: Int,
+//    val mulai: String,
+//    val selesai: String
 
 )
 

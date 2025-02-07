@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_gravity="center"
-    android:layout_marginLeft="25dp"
-    android:layout_marginRight="25dp"
-    tools:context=".Activity_jad_Nga_Selasa">
+
+
+    <androidx.cardview.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:padding="16dp"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="4dp"
+    >
 
     <LinearLayout
         android:layout_width="350dp"
@@ -18,7 +21,11 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="160dp">
+            android:layout_height="160dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            tools:context=".Activity_jad_Nga_Selasa">
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -66,7 +73,7 @@
 <!--                app:layout_constraintTop_toBottomOf="@id/Kitab" />-->
 
             <TextView
-                android:id="@+id/jam"
+                android:id="@+id/jamMulai"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="40dp"
@@ -78,7 +85,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/Kitab" />
             <TextView
-                android:id="@+id/jam_Selesai"
+                android:id="@+id/jamSelesai"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="40dp"
@@ -88,11 +95,10 @@
                 android:textColor="@color/black"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/jam" />
+                app:layout_constraintTop_toBottomOf="@+id/jamMulai" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 
     </LinearLayout>
-
-</androidx.cardview.widget.CardView>
+    </androidx.cardview.widget.CardView>
